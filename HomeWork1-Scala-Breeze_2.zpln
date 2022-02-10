@@ -1,0 +1,680 @@
+﻿{
+  "paragraphs": [
+    {
+      "text": "val dir = \"notebook/otus/homework1/\"\nval filename = \"Dataset.csv\"",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-30T15:53:28+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mdir\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m = notebook/otus/homework1/\n\u001b[1m\u001b[34mfilename\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m = Dataset.csv\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643544091290_449569222",
+      "id": "paragraph_1643544091290_449569222",
+      "dateCreated": "2022-01-30T12:01:31+0000",
+      "dateStarted": "2022-01-30T15:53:28+0000",
+      "dateFinished": "2022-01-30T15:53:45+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:484"
+    },
+    {
+      "text": "class CSVData(dir: String, filename: String){\r\n    import scala.io.Source\r\n    \r\n    private val file = dir+filename\r\n    \r\n    private def file_read[T](func: scala.io.BufferedSource=>T) = {\r\n        val bufferedSource = Source.fromFile(dir+filename)\r\n        val result = func(bufferedSource)\r\n        bufferedSource.close\r\n        result\r\n    }\r\n    \r\n    def getColsName() = {\r\n        file_read[List[String]](\r\n            bs => bs.getLines.next.split(\",\").map(_.trim).toList\r\n        )\r\n    }\r\n    \r\n    def seeRows(limit:Int = 5) = {\r\n        file_read[List[List[String]]](\r\n            bs => {\r\n                bs.getLines.next\r\n                bs.getLines.take(limit).map{line=>{\r\n                    line.split(\",\").map(_.trim).toList\r\n                }}.toList\r\n            }\r\n        )\r\n    }\r\n\r\n    def collectRows() = {\r\n        file_read[List[List[Double]]](\r\n            bs => {\r\n                bs.getLines.next\r\n                bs.getLines.collect{\r\n                    case line if !line.split(\",\").map(_.trim).exists(_.isEmpty) => line.split(\",\").map(_.trim.toDouble).toList\r\n                }.toList\r\n            }\r\n        )\r\n    }\r\n    \r\n}",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-30T15:54:03+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "defined class CSVData\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643553841835_791327765",
+      "id": "paragraph_1643553841835_791327765",
+      "dateCreated": "2022-01-30T14:44:01+0000",
+      "dateStarted": "2022-01-30T15:54:03+0000",
+      "dateFinished": "2022-01-30T15:54:04+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:485"
+    },
+    {
+      "text": "def show(data: CSVData, limit:Int = 5) = {\nprint(s\"\"\"%table\n${data.getColsName.mkString(\"\\t\")}\n${data.seeRows(limit).map { row =>\n row.mkString(\"\\t\")\n}.mkString(\"\\n\")}\n\"\"\")\n}",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-30T15:54:06+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mshow\u001b[0m: \u001b[1m\u001b[32m(data: CSVData, limit: Int)Unit\u001b[0m\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643557710532_373659977",
+      "id": "paragraph_1643557710532_373659977",
+      "dateCreated": "2022-01-30T15:48:30+0000",
+      "dateStarted": "2022-01-30T15:54:06+0000",
+      "dateFinished": "2022-01-30T15:54:06+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:486"
+    },
+    {
+      "text": "val data = new CSVData(dir, filename)",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-30T15:54:08+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mdata\u001b[0m: \u001b[1m\u001b[32mCSVData\u001b[0m = CSVData@632c00c7\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643555690065_1127452644",
+      "id": "paragraph_1643555690065_1127452644",
+      "dateCreated": "2022-01-30T15:14:50+0000",
+      "dateStarted": "2022-01-30T15:54:08+0000",
+      "dateFinished": "2022-01-30T15:54:08+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:487"
+    },
+    {
+      "text": "show(data)",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-30T15:54:14+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "likes": "string",
+                      "Checkins": "string",
+                      "Returns": "string",
+                      "Category": "string",
+                      "commBase": "string",
+                      "comm24": "string",
+                      "comm48": "string",
+                      "comm24_1": "string",
+                      "diff2448": "string",
+                      "baseTime": "string",
+                      "length": "string",
+                      "shares": "string",
+                      "hrs": "string",
+                      "sun_pub": "string",
+                      "mon_pub": "string",
+                      "tue_pub": "string",
+                      "wed_pub": "string",
+                      "thu_pub": "string",
+                      "fri_pub": "string",
+                      "sat_pub": "string",
+                      "sun_base": "string",
+                      "mon_base": "string",
+                      "tue_base": "string",
+                      "wed_base": "string",
+                      "thu_base": "string",
+                      "fri_base": "string",
+                      "sat_base": "string",
+                      "output": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "likes\tCheckins\tReturns\tCategory\tcommBase\tcomm24\tcomm48\tcomm24_1\tdiff2448\tbaseTime\tlength\tshares\thrs\tsun_pub\tmon_pub\ttue_pub\twed_pub\tthu_pub\tfri_pub\tsat_pub\tsun_base\tmon_base\ttue_base\twed_base\tthu_base\tfri_base\tsat_base\toutput\n634995\t0\t463\t1\t0\t0\t0\t0\t0\t65\t166\t2\t24\t0\t0\t0\t1\t0\t0\t0\t0\t0\t0\t0\t0\t0\t1\t0\n634995\t0\t463\t1\t0\t0\t0\t0\t0\t10\t132\t1\t24\t0\t0\t0\t0\t1\t0\t0\t0\t0\t0\t0\t0\t1\t0\t0\n634995\t0\t463\t1\t0\t0\t0\t0\t0\t14\t133\t2\t24\t0\t0\t0\t0\t0\t1\t0\t0\t0\t0\t0\t0\t0\t1\t0\n634995\t0\t463\t1\t7\t0\t3\t7\t-3\t62\t131\t1\t24\t0\t0\t0\t0\t0\t1\t0\t0\t1\t0\t0\t0\t0\t0\t0\n634995\t0\t463\t1\t1\t0\t0\t1\t0\t58\t142\t5\t24\t0\t\t0\t0\t0\t0\t0\t0\t0\t0\t1\t0\t0\t0\t0\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643557613430_143203861",
+      "id": "paragraph_1643557613430_143203861",
+      "dateCreated": "2022-01-30T15:46:53+0000",
+      "dateStarted": "2022-01-30T15:54:14+0000",
+      "dateFinished": "2022-01-30T15:54:14+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:488"
+    },
+    {
+      "text": "%md\n# Выбираем колонку которую будем пердсказывать",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-30T14:38:55+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h1>Выбираем колонку которую будем пердсказывать</h1>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643547390676_280036458",
+      "id": "paragraph_1643547390676_280036458",
+      "dateCreated": "2022-01-30T12:56:30+0000",
+      "dateStarted": "2022-01-30T14:38:55+0000",
+      "dateFinished": "2022-01-30T14:38:57+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:489"
+    },
+    {
+      "text": "val label = \"output\"\nval cols_features = data.getColsName.dropRight(1)",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-30T15:55:34+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mlabel\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m = output\n\u001b[1m\u001b[34mcols_features\u001b[0m: \u001b[1m\u001b[32mList[String]\u001b[0m = List(likes, Checkins, Returns, Category, commBase, comm24, comm48, comm24_1, diff2448, baseTime, length, shares, hrs, sun_pub, mon_pub, tue_pub, wed_pub, thu_pub, fri_pub, sat_pub, sun_base, mon_base, tue_base, wed_base, thu_base, fri_base, sat_base)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643547430675_2001258883",
+      "id": "paragraph_1643547430675_2001258883",
+      "dateCreated": "2022-01-30T12:57:10+0000",
+      "dateStarted": "2022-01-30T15:55:34+0000",
+      "dateFinished": "2022-01-30T15:55:34+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:490"
+    },
+    {
+      "text": "val rows = data.collectRows\nval rows_features = rows.map(_.dropRight(1))\nval rows_label = rows.map(_.takeRight(1))",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-30T15:55:35+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mrows\u001b[0m: \u001b[1m\u001b[32mList[List[Double]]\u001b[0m = List(List(634995.0, 0.0, 463.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 65.0, 166.0, 2.0, 24.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0), List(634995.0, 0.0, 463.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10.0, 132.0, 1.0, 24.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0), List(634995.0, 0.0, 463.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 14.0, 133.0, 2.0, 24.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0), List(634995.0, 0.0, 463.0, 1.0, 7.0, 0.0, 3.0, 7.0, -3.0, 62.0, 131.0, 1.0, 24.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0), List(634995.0, 0.0, 463.0, 1.0, 1.0, 0.0, 1.0, 1.0, -1.0, 32.0, 157.0, 2.0, 24.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0...\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643544534160_811028658",
+      "id": "paragraph_1643544534160_811028658",
+      "dateCreated": "2022-01-30T12:08:54+0000",
+      "dateStarted": "2022-01-30T15:55:35+0000",
+      "dateFinished": "2022-01-30T15:55:36+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:491"
+    },
+    {
+      "text": "import breeze.linalg._\r\nimport breeze.numerics._",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-30T15:55:40+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import breeze.linalg._\nimport breeze.numerics._\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643548499529_1415730682",
+      "id": "paragraph_1643548499529_1415730682",
+      "dateCreated": "2022-01-30T13:14:59+0000",
+      "dateStarted": "2022-01-30T15:55:40+0000",
+      "dateFinished": "2022-01-30T15:55:40+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:492"
+    },
+    {
+      "text": "val matrix_features = DenseMatrix(rows_features:_*).apply(::, *).map(dv => {\n    val dm = dv.max+dv.min+1.0\n    val av = dv.reduce(_+_)/dv.length\n    dv.map(x=>{\n        (x-av)/dm\n    })\n} )\nval matrix_label = DenseMatrix(rows_label:_*)",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-30T21:15:31+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[33mwarning: \u001b[0mthere were two deprecation warnings (since 0.6); for details, enable `:setting -deprecation' or `:replay -deprecation'\n\u001b[1m\u001b[34mmatrix_features\u001b[0m: \u001b[1m\u001b[32mbreeze.linalg.DenseMatrix[Double]\u001b[0m =\n-0.0015988004962038062  -0.026607581026715475  ... (27 total)\n-0.0015988004962038062  -0.026607581026715475  ...\n-0.0015988004962038062  -0.026607581026715475  ...\n-0.0015988004962038062  -0.026607581026715475  ...\n-0.0015988004962038062  -0.026607581026715475  ...\n2.8556527969671966E-4   -0.026607581026715475  ...\n2.8556527969671966E-4   -0.026607581026715475  ...\n2.8556527969671966E-4   -0.026607581026715475  ...\n2.8556527969671966E-4   -0.026607581026715475  ...\n2.8556527969671966E-4   -0.026607581026715475  ...\n2.8556527969671966E-4   -0.026607581026715475  ...\n2.8556527969671966E-4   -0.026607581026715475  ...\n2.8556527969671966E-4   -0.026607581026715475  ...\n2.8556527969671966E-4   -0.02660758102671547...\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643552677107_1863894839",
+      "id": "paragraph_1643552677107_1863894839",
+      "dateCreated": "2022-01-30T14:24:37+0000",
+      "dateStarted": "2022-01-30T21:15:31+0000",
+      "dateFinished": "2022-01-30T21:15:32+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:493"
+    },
+    {
+      "text": "def gradientDescent(\r\n    x:DenseMatrix[Double],\r\n    y:DenseMatrix[Double],\r\n    theta:DenseMatrix[Double],\r\n    alpha:Double,\r\n    iters:Int) = {\r\n    val m = x.rows.toDouble\r\n    val xTrans = x.t\r\n    var th = theta.copy\r\n    var i = 0\r\n    var result = List[Double]()\r\n    while( i < iters ){\r\n        var hypothesis = x*th.t\r\n        var loss = hypothesis - y\r\n        var cost = sum(pow(loss, 2)) / (2 * m)\r\n        //println(s\"Iteration $i | Cost: $cost\")\r\n        var gradient = (xTrans*loss)/m\r\n        th = th - (alpha * gradient).t\r\n        result = result :+ cost\r\n        i+=1\r\n    }\r\n    \r\n    (th, result)\r\n}",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-31T18:37:05+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mgradientDescent\u001b[0m: \u001b[1m\u001b[32m(x: breeze.linalg.DenseMatrix[Double], y: breeze.linalg.DenseMatrix[Double], theta: breeze.linalg.DenseMatrix[Double], alpha: Double, iters: Int)(breeze.linalg.DenseMatrix[Double], List[Double])\u001b[0m\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643577227327_1697947627",
+      "id": "paragraph_1643577227327_1697947627",
+      "dateCreated": "2022-01-30T21:13:47+0000",
+      "dateStarted": "2022-01-31T13:40:29+0000",
+      "dateFinished": "2022-01-31T13:40:30+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:494"
+    },
+    {
+      "text": "val theta = DenseMatrix.ones[Double]( 1, matrix_features.cols)\r\nval alpha = 0.01\r\nval iters = 1000000",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-31T13:40:32+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mtheta\u001b[0m: \u001b[1m\u001b[32mbreeze.linalg.DenseMatrix[Double]\u001b[0m = 1.0  1.0  1.0  1.0  1.0  1.0  1.0  1.0  1.0  1.0  1.0  1.0  1.0  ... (27 total)\n\u001b[1m\u001b[34malpha\u001b[0m: \u001b[1m\u001b[32mDouble\u001b[0m = 0.01\n\u001b[1m\u001b[34miters\u001b[0m: \u001b[1m\u001b[32mInt\u001b[0m = 1000000\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643552679504_1601506377",
+      "id": "paragraph_1643552679504_1601506377",
+      "dateCreated": "2022-01-30T14:24:39+0000",
+      "dateStarted": "2022-01-31T13:40:32+0000",
+      "dateFinished": "2022-01-31T13:40:32+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:495"
+    },
+    {
+      "text": "val (th, cost) = gradientDescent(\r\n    x=matrix_features,\r\n    y=matrix_label,\r\n    theta=theta,\r\n    alpha=alpha,\r\n    iters=iters\r\n)",
+      "user": "anonymous",
+      "dateUpdated": "2022-01-31T13:40:37+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mth\u001b[0m: \u001b[1m\u001b[32mbreeze.linalg.DenseMatrix[Double]\u001b[0m = -24.547125387348775  -4.084824916928716  90.3542943589447  ... (27 total)\n\u001b[1m\u001b[34mcost\u001b[0m: \u001b[1m\u001b[32mList[Double]\u001b[0m = List(649.8817354805283, 649.7784185692426, 649.6752267610195, 649.5721598607062, 649.4692176735007, 649.366400004849, 649.2637066606032, 649.1611374468811, 649.0586921701423, 648.9563706371507, 648.8541726550205, 648.7520980311455, 648.6501465732625, 648.5483180894182, 648.4466123879839, 648.3450292776334, 648.2435685673657, 648.1422300664942, 648.0410135846424, 647.9399189317562, 647.8389459180867, 647.7380943542029, 647.6373640509845, 647.5367548196336, 647.4362664716596, 647.3358988188559, 647.2356516733805, 647.1355248476401, 647.035518154402, 646.9356314067041, 646.835864417935, 646.7362170017432, ...\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643553330730_1458263302",
+      "id": "paragraph_1643553330730_1458263302",
+      "dateCreated": "2022-01-30T14:35:30+0000",
+      "dateStarted": "2022-01-31T13:40:37+0000",
+      "dateFinished": "2022-01-31T16:28:34+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:496"
+    },
+    {
+      "user": "anonymous",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643552680454_1965290324",
+      "id": "paragraph_1643552680454_1965290324",
+      "dateCreated": "2022-01-30T14:24:40+0000",
+      "status": "READY",
+      "$$hashKey": "object:498"
+    },
+    {
+      "user": "anonymous",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1643552681065_1984224992",
+      "id": "paragraph_1643552681065_1984224992",
+      "dateCreated": "2022-01-30T14:24:41+0000",
+      "status": "READY",
+      "$$hashKey": "object:499"
+    }
+  ],
+  "name": "HomeWork1-Scala-Breeze",
+  "id": "2GVY3A9Z2",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {},
+  "path": "/otus/HomeWork1-Scala-Breeze"
+}
