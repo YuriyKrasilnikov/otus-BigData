@@ -41,7 +41,7 @@
       "dateFinished": "2022-05-21T18:15:59+0000",
       "status": "FINISHED",
       "focus": true,
-      "$$hashKey": "object:85501"
+      "$$hashKey": "object:692"
     },
     {
       "text": "// Read date\nval dir = \"./notebook/otus/homework4\"\nval dataDir = dir+\"/collabTrain\"\nval dfRaw = spark.read.load(dataDir)",
@@ -84,11 +84,11 @@
           "values": [
             {
               "jobUrl": "http://37479a3770b2:4040/jobs/job?id=0",
-              "$$hashKey": "object:126911"
+              "$$hashKey": "object:2633"
             },
             {
               "jobUrl": "http://37479a3770b2:4040/jobs/job?id=1",
-              "$$hashKey": "object:126912"
+              "$$hashKey": "object:2634"
             }
           ],
           "interpreterSettingId": "spark"
@@ -101,7 +101,7 @@
       "dateStarted": "2022-05-21T19:16:52+0000",
       "dateFinished": "2022-05-21T19:16:58+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:85502"
+      "$$hashKey": "object:693"
     },
     {
       "text": "z.show(dfRaw)",
@@ -344,7 +344,7 @@
           "values": [
             {
               "jobUrl": "http://37479a3770b2:4040/jobs/job?id=2",
-              "$$hashKey": "object:86620"
+              "$$hashKey": "object:2684"
             }
           ],
           "interpreterSettingId": "spark"
@@ -357,7 +357,7 @@
       "dateStarted": "2022-05-21T17:43:58+0000",
       "dateFinished": "2022-05-21T17:44:08+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:85503"
+      "$$hashKey": "object:694"
     },
     {
       "text": "dfRaw.printSchema",
@@ -399,7 +399,7 @@
       "dateStarted": "2022-05-21T17:47:32+0000",
       "dateFinished": "2022-05-21T17:47:32+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:85504"
+      "$$hashKey": "object:695"
     },
     {
       "text": "// let's get information from \"date\" of the event\r\nval dfEvent = dfRaw.select(\r\n       col(\"instanceId_userId\"),\r\n       year(col(\"date\")).as(\"year\"), \r\n       month(col(\"date\")).as(\"month\"), \r\n       dayofweek(col(\"date\")).as(\"dayofweek\"), \r\n       dayofmonth(col(\"date\")).as(\"dayofmonth\"), \r\n       dayofyear(col(\"date\")).as(\"dayofyear\"),\r\n       weekofyear(col(\"date\")).as(\"weekofyear\")\r\n       )\r\n\r\ndfEvent.show",
@@ -442,7 +442,7 @@
           "values": [
             {
               "jobUrl": "http://37479a3770b2:4040/jobs/job?id=2",
-              "$$hashKey": "object:121106"
+              "$$hashKey": "object:2770"
             }
           ],
           "interpreterSettingId": "spark"
@@ -455,7 +455,7 @@
       "dateStarted": "2022-05-21T18:16:10+0000",
       "dateFinished": "2022-05-21T18:16:12+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:85505"
+      "$$hashKey": "object:696"
     },
     {
       "text": "// let's see if the year and month carry the information\n\ndfEvent.select(\"year\", \"month\").dropDuplicates().show\n",
@@ -498,23 +498,23 @@
           "values": [
             {
               "jobUrl": "http://37479a3770b2:4040/jobs/job?id=3",
-              "$$hashKey": "object:121214"
+              "$$hashKey": "object:2816"
             },
             {
               "jobUrl": "http://37479a3770b2:4040/jobs/job?id=4",
-              "$$hashKey": "object:121215"
+              "$$hashKey": "object:2817"
             },
             {
               "jobUrl": "http://37479a3770b2:4040/jobs/job?id=5",
-              "$$hashKey": "object:121216"
+              "$$hashKey": "object:2818"
             },
             {
               "jobUrl": "http://37479a3770b2:4040/jobs/job?id=6",
-              "$$hashKey": "object:121217"
+              "$$hashKey": "object:2819"
             },
             {
               "jobUrl": "http://37479a3770b2:4040/jobs/job?id=7",
-              "$$hashKey": "object:121218"
+              "$$hashKey": "object:2820"
             }
           ],
           "interpreterSettingId": "spark"
@@ -527,7 +527,7 @@
       "dateStarted": "2022-05-21T18:16:12+0000",
       "dateFinished": "2022-05-21T18:16:28+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:85506"
+      "$$hashKey": "object:697"
     },
     {
       "text": "%md\nВыше видим, что год не имет смысл учитывать, как и месяц.\nДля дальнейшего исследования имеет смысл работать с колонками:\n`dayofyear` -- так как мы рассматриваем только 1 год\nИ `dayofweek`, `dayofmonth` которые могут выявить периодичность",
@@ -571,7 +571,7 @@
       "dateStarted": "2022-05-21T17:47:26+0000",
       "dateFinished": "2022-05-21T17:47:26+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:85507"
+      "$$hashKey": "object:698"
     },
     {
       "text": "val foundDeffArray = udf[List[Int], List[Int]]( arr => {\n    if (arr.lengthCompare(2) < 0){\n        List(0)\n    }else{\n        arr.sorted.sliding(arr.length-1,1).toList.transpose.map{case List(l,r)=>{\n            r-l\n        }}\n    }\n})",
@@ -613,13 +613,13 @@
       "dateStarted": "2022-05-21T18:16:15+0000",
       "dateFinished": "2022-05-21T18:16:29+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:85508"
+      "$$hashKey": "object:699"
     },
     {
       "text": "// let's see what max day of that for correct churn\ndfEvent.select(max(\"dayofyear\")).show",
       "user": "anonymous",
       "dateUpdated": "2022-05-21T18:16:17+0000",
-      "progress": 100,
+      "progress": 93,
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -656,7 +656,7 @@
           "values": [
             {
               "jobUrl": "http://37479a3770b2:4040/jobs/job?id=8",
-              "$$hashKey": "object:121299"
+              "$$hashKey": "object:2962"
             }
           ],
           "interpreterSettingId": "spark"
@@ -669,7 +669,7 @@
       "dateStarted": "2022-05-21T18:16:28+0000",
       "dateFinished": "2022-05-21T18:16:43+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:85509"
+      "$$hashKey": "object:700"
     },
     {
       "text": "val foundDeffArray = udf[List[Int], List[Int]](arr => {\n    if (arr.lengthCompare(2) < 0){\n        List(0)\n    }else{\n        arr.sorted.sliding(arr.length-1,1).toList.transpose.map{case List(l,r)=>{\n            r-l\n        }}\n    }\n})",
@@ -711,7 +711,7 @@
       "dateStarted": "2022-05-21T18:16:29+0000",
       "dateFinished": "2022-05-21T18:16:43+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:85510"
+      "$$hashKey": "object:701"
     },
     {
       "text": "val getLastArray = udf[Int, List[Int]]{arr => {\n    arr.last\n}}",
@@ -753,13 +753,13 @@
       "dateStarted": "2022-05-21T18:16:43+0000",
       "dateFinished": "2022-05-21T18:16:44+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:85511"
+      "$$hashKey": "object:702"
     },
     {
       "text": "// see the statistics by date of the event\n\nval maxday = 80 //max day of the event in the dataframe\n\nval dfStat = dfEvent\n        .select(\n           \"instanceId_userId\",\n           //\"dayofweek\", \n           //\"dayofmonth\", \n           \"dayofyear\"\n        ).dropDuplicates\n        .groupBy(\"instanceId_userId\")\n        .agg(\n            count(\"dayofyear\").as(\"count_dayofevent\"),\n            array_sort(collect_list(\"dayofyear\")).as(\"list_dayofyear\"),\n            //stddev_pop(\"dayofyear\").as(\"stddev_dayofevent\")\n        ).withColumn(\"list_diff\",foundDeffArray(col(\"list_dayofyear\")))\n        .withColumn(\"last_diff\",getLastArray(col(\"list_diff\")))\n        .withColumn(\"day_diff2max\",-(getLastArray(col(\"list_dayofyear\"))-maxday))\n\ndfStat.show",
       "user": "anonymous",
       "dateUpdated": "2022-05-21T18:16:22+0000",
-      "progress": 0,
+      "progress": 93,
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -777,6 +777,15 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-----------------+----------------+--------------------+-------------------+---------+------------+\n|instanceId_userId|count_dayofevent|      list_dayofyear|          list_diff|last_diff|day_diff2max|\n+-----------------+----------------+--------------------+-------------------+---------+------------+\n|             1959|               1|                [32]|                [0]|        0|          48|\n|             3918|               1|                [58]|                [0]|        0|          22|\n|             4101|               2|            [46, 63]|               [17]|       17|          17|\n|             4818|               3|        [33, 53, 80]|           [20, 27]|       27|           0|\n|             6336|               2|            [44, 49]|                [5]|        5|          31|\n|             6357|               2|            [38, 49]|               [11]|       11|          31|\n|             6654|               3|        [44, 62, 69]|            [18, 7]|        7|          11|\n|             8592|               2|            [33, 39]|                [6]|        6|          41|\n|             9465|               3|        [75, 76, 78]|             [1, 2]|        2|           2|\n|             9852|               6|[45, 48, 51, 56, ...|    [3, 3, 5, 9, 7]|        7|           8|\n|             9900|               2|            [48, 60]|               [12]|       12|          20|\n|            10362|               1|                [49]|                [0]|        0|          31|\n|            10623|               1|                [66]|                [0]|        0|          14|\n|            11748|               3|        [50, 71, 79]|            [21, 8]|        8|           1|\n|            14832|               7|[45, 50, 58, 60, ...| [5, 8, 2, 4, 4, 1]|        1|          11|\n|            15957|               7|[39, 41, 50, 65, ...|[2, 9, 15, 2, 2, 1]|        1|          10|\n|            16503|               4|    [44, 53, 57, 59]|          [9, 4, 2]|        2|          21|\n|            17679|               7|[36, 43, 44, 47, ...|[7, 1, 3, 9, 4, 17]|       17|           3|\n|            18024|               2|            [54, 67]|               [13]|       13|          13|\n|            18654|               2|            [68, 72]|                [4]|        4|           8|\n+-----------------+----------------+--------------------+-------------------+---------+------------+\nonly showing top 20 rows\n\n\u001b[1m\u001b[34mmaxday\u001b[0m: \u001b[1m\u001b[32mInt\u001b[0m = 80\n\u001b[1m\u001b[34mdfStat\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [instanceId_userId: int, count_dayofevent: bigint ... 4 more fields]\n"
+          }
+        ]
+      },
       "apps": [],
       "runtimeInfos": {
         "jobUrl": {
@@ -787,7 +796,7 @@
           "values": [
             {
               "jobUrl": "http://37479a3770b2:4040/jobs/job?id=9",
-              "$$hashKey": "object:121385"
+              "$$hashKey": "object:3088"
             }
           ],
           "interpreterSettingId": "spark"
@@ -800,22 +809,13 @@
       "dateStarted": "2022-05-21T18:16:43+0000",
       "dateFinished": "2022-05-21T18:17:17+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:85512",
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "+-----------------+----------------+--------------------+-------------------+---------+------------+\n|instanceId_userId|count_dayofevent|      list_dayofyear|          list_diff|last_diff|day_diff2max|\n+-----------------+----------------+--------------------+-------------------+---------+------------+\n|             1959|               1|                [32]|                [0]|        0|          48|\n|             3918|               1|                [58]|                [0]|        0|          22|\n|             4101|               2|            [46, 63]|               [17]|       17|          17|\n|             4818|               3|        [33, 53, 80]|           [20, 27]|       27|           0|\n|             6336|               2|            [44, 49]|                [5]|        5|          31|\n|             6357|               2|            [38, 49]|               [11]|       11|          31|\n|             6654|               3|        [44, 62, 69]|            [18, 7]|        7|          11|\n|             8592|               2|            [33, 39]|                [6]|        6|          41|\n|             9465|               3|        [75, 76, 78]|             [1, 2]|        2|           2|\n|             9852|               6|[45, 48, 51, 56, ...|    [3, 3, 5, 9, 7]|        7|           8|\n|             9900|               2|            [48, 60]|               [12]|       12|          20|\n|            10362|               1|                [49]|                [0]|        0|          31|\n|            10623|               1|                [66]|                [0]|        0|          14|\n|            11748|               3|        [50, 71, 79]|            [21, 8]|        8|           1|\n|            14832|               7|[45, 50, 58, 60, ...| [5, 8, 2, 4, 4, 1]|        1|          11|\n|            15957|               7|[39, 41, 50, 65, ...|[2, 9, 15, 2, 2, 1]|        1|          10|\n|            16503|               4|    [44, 53, 57, 59]|          [9, 4, 2]|        2|          21|\n|            17679|               7|[36, 43, 44, 47, ...|[7, 1, 3, 9, 4, 17]|       17|           3|\n|            18024|               2|            [54, 67]|               [13]|       13|          13|\n|            18654|               2|            [68, 72]|                [4]|        4|           8|\n+-----------------+----------------+--------------------+-------------------+---------+------------+\nonly showing top 20 rows\n\n\u001b[1m\u001b[34mmaxday\u001b[0m: \u001b[1m\u001b[32mInt\u001b[0m = 80\n\u001b[1m\u001b[34mdfStat\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [instanceId_userId: int, count_dayofevent: bigint ... 4 more fields]\n"
-          }
-        ]
-      }
+      "$$hashKey": "object:703"
     },
     {
       "text": "z.show(dfStat)",
       "user": "anonymous",
       "dateUpdated": "2022-05-21T17:47:07+0000",
-      "progress": 93,
+      "progress": 96,
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -1002,30 +1002,6 @@
         "params": {},
         "forms": {}
       },
-      "apps": [],
-      "runtimeInfos": {
-        "jobUrl": {
-          "propertyName": "jobUrl",
-          "label": "SPARK JOB",
-          "tooltip": "View in Spark web UI",
-          "group": "spark",
-          "values": [
-            {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=11",
-              "$$hashKey": "object:118746"
-            }
-          ],
-          "interpreterSettingId": "spark"
-        }
-      },
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1652607944054_228731414",
-      "id": "paragraph_1652607944054_228731414",
-      "dateCreated": "2022-05-15T09:45:44+0000",
-      "dateStarted": "2022-05-21T17:44:43+0000",
-      "dateFinished": "2022-05-21T17:45:50+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:85513",
       "results": {
         "code": "SUCCESS",
         "msg": [
@@ -1038,13 +1014,37 @@
             "data": "<div class=\"result-alert alert-warning\" role=\"alert\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button><strong>Output is truncated</strong> to 1000 rows. Learn more about <strong>zeppelin.spark.maxResult</strong></div>\n"
           }
         ]
-      }
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=11",
+              "$$hashKey": "object:3134"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1652607944054_228731414",
+      "id": "paragraph_1652607944054_228731414",
+      "dateCreated": "2022-05-15T09:45:44+0000",
+      "dateStarted": "2022-05-21T17:44:43+0000",
+      "dateFinished": "2022-05-21T17:45:50+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:704"
     },
     {
       "text": "z.show(dfStat.filter(col(\"day_diff2max\")>14))",
       "user": "anonymous",
       "dateUpdated": "2022-05-21T17:47:05+0000",
-      "progress": 94,
+      "progress": 93,
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -1124,30 +1124,6 @@
         "params": {},
         "forms": {}
       },
-      "apps": [],
-      "runtimeInfos": {
-        "jobUrl": {
-          "propertyName": "jobUrl",
-          "label": "SPARK JOB",
-          "tooltip": "View in Spark web UI",
-          "group": "spark",
-          "values": [
-            {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=12",
-              "$$hashKey": "object:118708"
-            }
-          ],
-          "interpreterSettingId": "spark"
-        }
-      },
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1652619456190_1982421125",
-      "id": "paragraph_1652619456190_1982421125",
-      "dateCreated": "2022-05-15T12:57:36+0000",
-      "dateStarted": "2022-05-21T17:45:20+0000",
-      "dateFinished": "2022-05-21T17:46:25+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:85514",
       "results": {
         "code": "SUCCESS",
         "msg": [
@@ -1160,7 +1136,31 @@
             "data": "<div class=\"result-alert alert-warning\" role=\"alert\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button><strong>Output is truncated</strong> to 1000 rows. Learn more about <strong>zeppelin.spark.maxResult</strong></div>\n"
           }
         ]
-      }
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=12",
+              "$$hashKey": "object:3180"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1652619456190_1982421125",
+      "id": "paragraph_1652619456190_1982421125",
+      "dateCreated": "2022-05-15T12:57:36+0000",
+      "dateStarted": "2022-05-21T17:45:20+0000",
+      "dateFinished": "2022-05-21T17:46:25+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:705"
     },
     {
       "title": "Выводы 1",
@@ -1206,7 +1206,7 @@
       "dateStarted": "2022-05-21T17:47:21+0000",
       "dateFinished": "2022-05-21T17:47:23+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:85515"
+      "$$hashKey": "object:706"
     },
     {
       "text": "%md\n# Подготовим сегменты и обучающую выборку ",
@@ -1250,7 +1250,7 @@
       "dateStarted": "2022-05-21T17:47:23+0000",
       "dateFinished": "2022-05-21T17:47:23+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:85516"
+      "$$hashKey": "object:707"
     },
     {
       "text": "val churnRisk = udf((num:Int, interval:List[Int])=>{\n    (Double.NegativeInfinity+:interval.map(_.toDouble).sorted:+Double.PositiveInfinity)\n    .sliding(2)\n    .zipWithIndex\n    .find{case (ls,ind) => {\n        num >= ls(0) && num < ls(1)\n    }}.get._2+1\n})",
@@ -1274,6 +1274,15 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mchurnRisk\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.expressions.UserDefinedFunction\u001b[0m = SparkUserDefinedFunction($Lambda$5140/1054585567@41220eac,IntegerType,List(Some(class[value[0]: int]), Some(class[value[0]: array<int>])),Some(class[value[0]: int]),None,false,true)\n"
+          }
+        ]
+      },
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
@@ -1283,22 +1292,13 @@
       "dateStarted": "2022-05-21T18:16:44+0000",
       "dateFinished": "2022-05-21T18:17:17+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:85517",
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "\u001b[1m\u001b[34mchurnRisk\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.expressions.UserDefinedFunction\u001b[0m = SparkUserDefinedFunction($Lambda$5140/1054585567@41220eac,IntegerType,List(Some(class[value[0]: int]), Some(class[value[0]: array<int>])),Some(class[value[0]: int]),None,false,true)\n"
-          }
-        ]
-      }
+      "$$hashKey": "object:708"
     },
     {
       "text": "/*\nRisk:\n=<1 day -- very low risk -- churn_risk = 1\n=<7 day -- low risk      -- churn_risk = 2\n=<14 day -- medium risk -- churn_risk = 3\n=<25 day -- high risk -- churn_risk = 4\n>25 day -- very high risk -- churn_risk = 5\n*/\nval riskInterval = List(1,7,14,25)\nval dfRisk = dfStat\n                .filter((col(\"day_diff2max\")>14))\n                .withColumn(\"churn_risk\", churnRisk(col(\"last_diff\"), typedLit(riskInterval)))\n\ndfRisk.show\n",
       "user": "anonymous",
       "dateUpdated": "2022-05-21T18:16:28+0000",
-      "progress": 99,
+      "progress": 95,
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -1316,6 +1316,15 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-----------------+----------------+----------------+---------+---------+------------+----------+\n|instanceId_userId|count_dayofevent|  list_dayofyear|list_diff|last_diff|day_diff2max|churn_risk|\n+-----------------+----------------+----------------+---------+---------+------------+----------+\n|             1959|               1|            [32]|      [0]|        0|          48|         1|\n|             3918|               1|            [58]|      [0]|        0|          22|         1|\n|             4101|               2|        [46, 63]|     [17]|       17|          17|         4|\n|             6336|               2|        [44, 49]|      [5]|        5|          31|         2|\n|             6357|               2|        [38, 49]|     [11]|       11|          31|         3|\n|             8592|               2|        [33, 39]|      [6]|        6|          41|         2|\n|             9900|               2|        [48, 60]|     [12]|       12|          20|         3|\n|            10362|               1|            [49]|      [0]|        0|          31|         1|\n|            16503|               4|[44, 53, 57, 59]|[9, 4, 2]|        2|          21|         2|\n|            19530|               1|            [57]|      [0]|        0|          23|         1|\n|            20382|               2|        [51, 64]|     [13]|       13|          16|         3|\n|            24171|               1|            [62]|      [0]|        0|          18|         1|\n|            24354|               3|    [38, 39, 48]|   [1, 9]|        9|          32|         3|\n|            28170|               1|            [35]|      [0]|        0|          45|         1|\n|            28836|               1|            [45]|      [0]|        0|          35|         1|\n|            29814|               2|        [32, 38]|      [6]|        6|          42|         2|\n|            31236|               1|            [48]|      [0]|        0|          32|         1|\n|            31983|               1|            [41]|      [0]|        0|          39|         1|\n|            32460|               1|            [39]|      [0]|        0|          41|         1|\n|            33717|               1|            [64]|      [0]|        0|          16|         1|\n+-----------------+----------------+----------------+---------+---------+------------+----------+\nonly showing top 20 rows\n\n\u001b[1m\u001b[34mriskInterval\u001b[0m: \u001b[1m\u001b[32mList[Int]\u001b[0m = List(1, 7, 14, 25)\n\u001b[1m\u001b[34mdfRisk\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [instanceId_userId: int, count_dayofevent: bigint ... 5 more fields]\n"
+          }
+        ]
+      },
       "apps": [],
       "runtimeInfos": {
         "jobUrl": {
@@ -1326,7 +1335,7 @@
           "values": [
             {
               "jobUrl": "http://37479a3770b2:4040/jobs/job?id=10",
-              "$$hashKey": "object:121447"
+              "$$hashKey": "object:3346"
             }
           ],
           "interpreterSettingId": "spark"
@@ -1339,19 +1348,12 @@
       "dateStarted": "2022-05-21T18:17:17+0000",
       "dateFinished": "2022-05-21T18:17:48+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:85518",
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "+-----------------+----------------+----------------+---------+---------+------------+----------+\n|instanceId_userId|count_dayofevent|  list_dayofyear|list_diff|last_diff|day_diff2max|churn_risk|\n+-----------------+----------------+----------------+---------+---------+------------+----------+\n|             1959|               1|            [32]|      [0]|        0|          48|         1|\n|             3918|               1|            [58]|      [0]|        0|          22|         1|\n|             4101|               2|        [46, 63]|     [17]|       17|          17|         4|\n|             6336|               2|        [44, 49]|      [5]|        5|          31|         2|\n|             6357|               2|        [38, 49]|     [11]|       11|          31|         3|\n|             8592|               2|        [33, 39]|      [6]|        6|          41|         2|\n|             9900|               2|        [48, 60]|     [12]|       12|          20|         3|\n|            10362|               1|            [49]|      [0]|        0|          31|         1|\n|            16503|               4|[44, 53, 57, 59]|[9, 4, 2]|        2|          21|         2|\n|            19530|               1|            [57]|      [0]|        0|          23|         1|\n|            20382|               2|        [51, 64]|     [13]|       13|          16|         3|\n|            24171|               1|            [62]|      [0]|        0|          18|         1|\n|            24354|               3|    [38, 39, 48]|   [1, 9]|        9|          32|         3|\n|            28170|               1|            [35]|      [0]|        0|          45|         1|\n|            28836|               1|            [45]|      [0]|        0|          35|         1|\n|            29814|               2|        [32, 38]|      [6]|        6|          42|         2|\n|            31236|               1|            [48]|      [0]|        0|          32|         1|\n|            31983|               1|            [41]|      [0]|        0|          39|         1|\n|            32460|               1|            [39]|      [0]|        0|          41|         1|\n|            33717|               1|            [64]|      [0]|        0|          16|         1|\n+-----------------+----------------+----------------+---------+---------+------------+----------+\nonly showing top 20 rows\n\n\u001b[1m\u001b[34mriskInterval\u001b[0m: \u001b[1m\u001b[32mList[Int]\u001b[0m = List(1, 7, 14, 25)\n\u001b[1m\u001b[34mdfRisk\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [instanceId_userId: int, count_dayofevent: bigint ... 5 more fields]\n"
-          }
-        ]
-      }
+      "$$hashKey": "object:709"
     },
     {
+      "text": "val dataRiskDir = dir + \"/dfrisk\"\n\n//dfRisk.write.save(dataRiskDir)\n\nval dfRisk = spark.read.load(dataRiskDir)",
       "user": "anonymous",
+      "dateUpdated": "2022-05-21T19:17:00+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -1370,6 +1372,15 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mdataRiskDir\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m = ./notebook/otus/homework4/dfrisk\n\u001b[1m\u001b[34mdfRisk\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [instanceId_userId: int, count_dayofevent: bigint ... 5 more fields]\n"
+          }
+        ]
+      },
       "apps": [],
       "runtimeInfos": {
         "jobUrl": {
@@ -1380,7 +1391,7 @@
           "values": [
             {
               "jobUrl": "http://37479a3770b2:4040/jobs/job?id=2",
-              "$$hashKey": "object:126953"
+              "$$hashKey": "object:3392"
             }
           ],
           "interpreterSettingId": "spark"
@@ -1390,22 +1401,10 @@
       "jobName": "paragraph_1653156858388_627579492",
       "id": "paragraph_1653156858388_627579492",
       "dateCreated": "2022-05-21T18:14:18+0000",
-      "status": "FINISHED",
-      "focus": true,
-      "$$hashKey": "object:120858",
-      "text": "val dataRiskDir = dir + \"/dfrisk\"\n\n//dfRisk.write.save(dataRiskDir)\n\nval dfRisk = spark.read.load(dataRiskDir)",
-      "dateUpdated": "2022-05-21T19:17:00+0000",
-      "dateFinished": "2022-05-21T19:17:04+0000",
       "dateStarted": "2022-05-21T19:17:00+0000",
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "\u001b[1m\u001b[34mdataRiskDir\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m = ./notebook/otus/homework4/dfrisk\n\u001b[1m\u001b[34mdfRisk\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [instanceId_userId: int, count_dayofevent: bigint ... 5 more fields]\n"
-          }
-        ]
-      }
+      "dateFinished": "2022-05-21T19:17:04+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:710"
     },
     {
       "text": "val dfTrain = dfRaw\n                .join(dfRisk.select(\"instanceId_userId\", \"churn_risk\"), \"instanceId_userId\")",
@@ -1429,6 +1428,15 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mdfTrain\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [instanceId_userId: int, instanceId_objectType: string ... 168 more fields]\n"
+          }
+        ]
+      },
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
@@ -1438,16 +1446,7 @@
       "dateStarted": "2022-05-21T18:22:53+0000",
       "dateFinished": "2022-05-21T18:22:56+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:85519",
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "\u001b[1m\u001b[34mdfTrain\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [instanceId_userId: int, instanceId_objectType: string ... 168 more fields]\n"
-          }
-        ]
-      }
+      "$$hashKey": "object:711"
     },
     {
       "text": "z.show(dfTrain)",
@@ -1691,7 +1690,7 @@
           "values": [
             {
               "jobUrl": "http://37479a3770b2:4040/jobs/job?id=11",
-              "$$hashKey": "object:87517"
+              "$$hashKey": "object:3478"
             }
           ],
           "interpreterSettingId": "spark"
@@ -1704,7 +1703,7 @@
       "dateStarted": "2022-05-21T15:26:07+0000",
       "dateFinished": "2022-05-21T15:29:23+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:85520"
+      "$$hashKey": "object:712"
     },
     {
       "text": "val dataTrainDir = dir + \"/dftrain\"\n\n//dfTrain.write.save(dataTrainDir)\n\nval dfTrain = spark.read.load(dataTrainDir)",
@@ -1728,6 +1727,15 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mdataTrainDir\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m = ./notebook/otus/homework4/dftrain\n\u001b[1m\u001b[34mdfTrain\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [instanceId_userId: int, instanceId_objectType: string ... 168 more fields]\n"
+          }
+        ]
+      },
       "apps": [],
       "runtimeInfos": {
         "jobUrl": {
@@ -1738,7 +1746,7 @@
           "values": [
             {
               "jobUrl": "http://37479a3770b2:4040/jobs/job?id=3",
-              "$$hashKey": "object:126987"
+              "$$hashKey": "object:3524"
             }
           ],
           "interpreterSettingId": "spark"
@@ -1748,19 +1756,10 @@
       "jobName": "paragraph_1653154746835_1447297547",
       "id": "paragraph_1653154746835_1447297547",
       "dateCreated": "2022-05-21T17:39:06+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:85521",
-      "dateFinished": "2022-05-21T19:17:05+0000",
       "dateStarted": "2022-05-21T19:17:03+0000",
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "\u001b[1m\u001b[34mdataTrainDir\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m = ./notebook/otus/homework4/dftrain\n\u001b[1m\u001b[34mdfTrain\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [instanceId_userId: int, instanceId_objectType: string ... 168 more fields]\n"
-          }
-        ]
-      }
+      "dateFinished": "2022-05-21T19:17:05+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:713"
     },
     {
       "text": "%md\n# Подготовим модель предсказывающую уходящих пользователей",
@@ -1804,12 +1803,12 @@
       "dateStarted": "2022-05-21T17:50:39+0000",
       "dateFinished": "2022-05-21T17:50:39+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:85522"
+      "$$hashKey": "object:714"
     },
     {
-      "text": "import org.apache.spark.ml.{Transformer, Estimator, Model, Pipeline, PipelineModel}\nimport org.apache.spark.ml.param.{Params, ParamMap, Param, DoubleParam, StringArrayParam}\nimport org.apache.spark.ml.util.{Identifiable, DefaultParamsReadable, DefaultParamsWritable}\nimport org.apache.spark.ml.feature.{StringIndexer, Imputer, VectorAssembler, Interaction, StandardScaler}\nimport org.apache.spark.ml.linalg.{Vector, Vectors, DenseVector}\nimport org.apache.spark.ml.classification.{LogisticRegression}\nimport org.apache.spark.ml.evaluation.{MulticlassClassificationEvaluator}\nimport org.apache.spark.sql.{SQLContext, DataFrame, Dataset, Encoder, Encoders}\nimport org.apache.spark.sql.SparkSession\nimport org.apache.spark.sql.functions.{col, lit, explode, udf}\nimport org.apache.spark.sql.types.{DoubleType, DataTypes, StructType, StructField}",
+      "text": "import org.apache.spark.ml.{Transformer, Estimator, Model, Pipeline, PipelineModel}\nimport org.apache.spark.ml.tuning.{CrossValidator, ParamGridBuilder}\nimport org.apache.spark.ml.param.{Params, ParamMap, Param, DoubleParam, StringArrayParam}\nimport org.apache.spark.ml.util.{Identifiable, DefaultParamsReadable, DefaultParamsWritable}\nimport org.apache.spark.ml.feature.{StringIndexer, Imputer, VectorAssembler, Interaction, StandardScaler}\nimport org.apache.spark.ml.linalg.{Vector, Vectors, DenseVector}\nimport org.apache.spark.ml.classification.{LogisticRegression, LogisticRegressionModel}\nimport org.apache.spark.ml.evaluation.{MulticlassClassificationEvaluator, RegressionEvaluator}\nimport org.apache.spark.sql.{SQLContext, DataFrame, Dataset, Encoder, Encoders}\nimport org.apache.spark.sql.SparkSession\nimport org.apache.spark.sql.functions.{col, lit, explode, udf}\nimport org.apache.spark.sql.types.{DoubleType, DataTypes, StructType, StructField}",
       "user": "anonymous",
-      "dateUpdated": "2022-05-21T20:15:28+0000",
+      "dateUpdated": "2022-05-21T22:28:46+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -1828,26 +1827,25 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import org.apache.spark.ml.{Transformer, Estimator, Model, Pipeline, PipelineModel}\nimport org.apache.spark.ml.tuning.{CrossValidator, ParamGridBuilder}\nimport org.apache.spark.ml.param.{Params, ParamMap, Param, DoubleParam, StringArrayParam}\nimport org.apache.spark.ml.util.{Identifiable, DefaultParamsReadable, DefaultParamsWritable}\nimport org.apache.spark.ml.feature.{StringIndexer, Imputer, VectorAssembler, Interaction, StandardScaler}\nimport org.apache.spark.ml.linalg.{Vector, Vectors, DenseVector}\nimport org.apache.spark.ml.classification.{LogisticRegression, LogisticRegressionModel}\nimport org.apache.spark.ml.evaluation.{MulticlassClassificationEvaluator, RegressionEvaluator}\nimport org.apache.spark.sql.{SQLContext, DataFrame, Dataset, Encoder, Encoders}\nimport org.apache.spark.sql...\n"
+          }
+        ]
+      },
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
       "jobName": "paragraph_1653161910411_727370926",
       "id": "paragraph_1653161910411_727370926",
       "dateCreated": "2022-05-21T19:38:30+0000",
+      "dateStarted": "2022-05-21T22:28:46+0000",
+      "dateFinished": "2022-05-21T22:28:46+0000",
       "status": "FINISHED",
-      "focus": true,
-      "$$hashKey": "object:128773",
-      "dateFinished": "2022-05-21T20:15:28+0000",
-      "dateStarted": "2022-05-21T20:15:28+0000",
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "import org.apache.spark.ml.{Transformer, Estimator, Model, Pipeline, PipelineModel}\nimport org.apache.spark.ml.param.{Params, ParamMap, Param, DoubleParam, StringArrayParam}\nimport org.apache.spark.ml.util.{Identifiable, DefaultParamsReadable, DefaultParamsWritable}\nimport org.apache.spark.ml.feature.{StringIndexer, Imputer, VectorAssembler, Interaction, StandardScaler}\nimport org.apache.spark.ml.linalg.{Vector, Vectors, DenseVector}\nimport org.apache.spark.ml.classification.LogisticRegression\nimport org.apache.spark.ml.evaluation.MulticlassClassificationEvaluator\nimport org.apache.spark.sql.{SQLContext, DataFrame, Dataset, Encoder, Encoders}\nimport org.apache.spark.sql.SparkSession\nimport org.apache.spark.sql.functions.{col, lit, explode, udf}\nimport org.apache.spark.sql.types.{DoubleT...\n"
-          }
-        ]
-      }
+      "$$hashKey": "object:715"
     },
     {
       "text": "// Common Parameters\r\ntrait NullColumnParams extends Params {\r\n    // Defining a Param requires 3 elements:\r\n    //  - Param definition\r\n    //  - Param getter method\r\n    //  - Param setter method\r\n    \r\n    /**---\r\n        * Param for input column names.\r\n    */\r\n    final val inputCols: StringArrayParam = new StringArrayParam(this, \"inputCols\", \"Input column names\")\r\n    \r\n    final def getInputCols: Array[String] = $(inputCols)\r\n    \r\n    final def setInputCols(value: Array[String]): this.type = set(inputCols, value)\r\n    \r\n    setDefault(inputCols -> Array.empty[String])\r\n    \r\n    \r\n    final val outputCols: StringArrayParam = new StringArrayParam(this, \"outputCols\", \"Output column names\")\r\n    \r\n    final def getOutputCols: Array[String] = $(outputCols)\r\n    \r\n    final def setOutputCols(value: Array[String]): this.type = set(outputCols, value)\r\n    \r\n    setDefault(outputCols -> Array.empty[String])\r\n    \r\n    \r\n    final val missingValue: DoubleParam = new DoubleParam(this, \"missingValue\", \"Replace null values\")\r\n    \r\n    final def getMissingValue: Double = $(missingValue)\r\n    \r\n    final def setMissingValue(value: Double): this.type = set(missingValue, value)\r\n    \r\n    setDefault(missingValue -> -1.0)\r\n \r\n}",
@@ -1873,17 +1871,6 @@
         "params": {},
         "forms": {}
       },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1653161892420_964402413",
-      "id": "paragraph_1653161892420_964402413",
-      "dateCreated": "2022-05-21T19:38:12+0000",
-      "status": "FINISHED",
-      "focus": true,
-      "$$hashKey": "object:128666",
-      "dateFinished": "2022-05-21T19:38:40+0000",
-      "dateStarted": "2022-05-21T19:38:40+0000",
       "results": {
         "code": "SUCCESS",
         "msg": [
@@ -1892,10 +1879,22 @@
             "data": "defined trait NullColumnParams\n"
           }
         ]
-      }
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1653161892420_964402413",
+      "id": "paragraph_1653161892420_964402413",
+      "dateCreated": "2022-05-21T19:38:12+0000",
+      "dateStarted": "2022-05-21T19:38:40+0000",
+      "dateFinished": "2022-05-21T19:38:40+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:716"
     },
     {
+      "text": "class NullColumnModel(override val uid: String) extends Model[NullColumnModel]\n    with DefaultParamsWritable // Enables Serialization\n    with NullColumnParams {\n    \n    import spark.implicits._\n    \n    \n    // Transformer requires 3 methods:\n    //  - transform\n    //  - transformSchema\n    //  - copy\n\n    \n    /**\n    * This method implements the main transformation.\n    * Its required semantics are fully defined by the method API: take a Dataset or DataFrame,\n    * and return a DataFrame.\n    */\n    override def transform(dataset: Dataset[_]): DataFrame = {\n        val colsMap=($(inputCols) zip $(outputCols)).toMap\n\n        colsMap.foldLeft(dataset.toDF)(\n            (ds, columnMap) => ds.withColumn(columnMap._2, col(columnMap._1) )\n        ).na.fill($(missingValue), $(outputCols))\n    }\n    \n    /*\n    * Check transform validity and derive the output schema from the input schema.\n    *\n    * We check validity for interactions between parameters during `transformSchema` and\n    * raise an exception if any parameter value is invalid. Parameter value checks which\n    * do not depend on other parameters are handled by `Param.validate()`.\n    *\n    * Typical implementation should first conduct verification on schema change and parameter\n    * validity, including complex parameter interaction checks.\n    */\n    \n    override def transformSchema(schema: StructType): StructType = {\n        // Validate input type.\n        // Input type validation is technically optional, but it is a good practice since it catches\n        // schema errors early on.\n        $(inputCols).foreach((inputColName: String) => {\n            require(schema.fieldNames.contains(inputColName), s\"Input column $inputColName must exist.\")\n        })\n        \n        StructType(\n            schema.fields ++ $(outputCols).map(c=>{StructField(c,DoubleType,false)})\n        )\n    }\n    /**\n    * Creates a copy of this instance.\n    * Requirements:\n    *  - The copy must have the same UID.\n    *  - The copy must have the same Params, with some possibly overwritten by the `extra`\n    *    argument.\n    *  - This should do a deep copy of any data members which are mutable.  That said,\n    *    Transformers should generally be immutable (except for Params), so the `defaultCopy`\n    *    method often suffices.\n    * @param extra  Param values which will overwrite Params in the copy.\n    */\n    override def copy(extra: ParamMap): NullColumnModel = defaultCopy(extra)\n}\n\nobject NullColumnModel extends DefaultParamsReadable[NullColumnModel]",
       "user": "anonymous",
+      "dateUpdated": "2022-05-21T19:38:57+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -1914,19 +1913,6 @@
         "params": {},
         "forms": {}
       },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1653161933810_288957734",
-      "id": "paragraph_1653161933810_288957734",
-      "dateCreated": "2022-05-21T19:38:53+0000",
-      "status": "FINISHED",
-      "focus": true,
-      "$$hashKey": "object:128911",
-      "text": "class NullColumnModel(override val uid: String) extends Model[NullColumnModel]\n    with DefaultParamsWritable // Enables Serialization\n    with NullColumnParams {\n    \n    import spark.implicits._\n    \n    \n    // Transformer requires 3 methods:\n    //  - transform\n    //  - transformSchema\n    //  - copy\n\n    \n    /**\n    * This method implements the main transformation.\n    * Its required semantics are fully defined by the method API: take a Dataset or DataFrame,\n    * and return a DataFrame.\n    */\n    override def transform(dataset: Dataset[_]): DataFrame = {\n        val colsMap=($(inputCols) zip $(outputCols)).toMap\n\n        colsMap.foldLeft(dataset.toDF)(\n            (ds, columnMap) => ds.withColumn(columnMap._2, col(columnMap._1) )\n        ).na.fill($(missingValue), $(outputCols))\n    }\n    \n    /*\n    * Check transform validity and derive the output schema from the input schema.\n    *\n    * We check validity for interactions between parameters during `transformSchema` and\n    * raise an exception if any parameter value is invalid. Parameter value checks which\n    * do not depend on other parameters are handled by `Param.validate()`.\n    *\n    * Typical implementation should first conduct verification on schema change and parameter\n    * validity, including complex parameter interaction checks.\n    */\n    \n    override def transformSchema(schema: StructType): StructType = {\n        // Validate input type.\n        // Input type validation is technically optional, but it is a good practice since it catches\n        // schema errors early on.\n        $(inputCols).foreach((inputColName: String) => {\n            require(schema.fieldNames.contains(inputColName), s\"Input column $inputColName must exist.\")\n        })\n        \n        StructType(\n            schema.fields ++ $(outputCols).map(c=>{StructField(c,DoubleType,false)})\n        )\n    }\n    /**\n    * Creates a copy of this instance.\n    * Requirements:\n    *  - The copy must have the same UID.\n    *  - The copy must have the same Params, with some possibly overwritten by the `extra`\n    *    argument.\n    *  - This should do a deep copy of any data members which are mutable.  That said,\n    *    Transformers should generally be immutable (except for Params), so the `defaultCopy`\n    *    method often suffices.\n    * @param extra  Param values which will overwrite Params in the copy.\n    */\n    override def copy(extra: ParamMap): NullColumnModel = defaultCopy(extra)\n}\n\nobject NullColumnModel extends DefaultParamsReadable[NullColumnModel]",
-      "dateUpdated": "2022-05-21T19:38:57+0000",
-      "dateFinished": "2022-05-21T19:38:57+0000",
-      "dateStarted": "2022-05-21T19:38:57+0000",
       "results": {
         "code": "SUCCESS",
         "msg": [
@@ -1935,10 +1921,22 @@
             "data": "defined class NullColumnModel\ndefined object NullColumnModel\n"
           }
         ]
-      }
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1653161933810_288957734",
+      "id": "paragraph_1653161933810_288957734",
+      "dateCreated": "2022-05-21T19:38:53+0000",
+      "dateStarted": "2022-05-21T19:38:57+0000",
+      "dateFinished": "2022-05-21T19:38:57+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:717"
     },
     {
+      "text": "class NullColumnEncoder(override val uid: String) extends Estimator[NullColumnModel]\n    with DefaultParamsWritable // Enables Serialization of MyCommonParams\n    with NullColumnParams {\n    \n    import spark.implicits._\n\n    def this() = this(Identifiable.randomUID(\"NullColumnEncoder\"))\n\n    /**\n    * Creates a copy of this instance.\n    * Requirements:\n    *  - The copy must have the same UID.\n    *  - The copy must have the same Params, with some possibly overwritten by the `extra`\n    *    argument.\n    *  - This should do a deep copy of any data members which are mutable.  That said,\n    *    Transformers should generally be immutable (except for Params), so the `defaultCopy`\n    *    method often suffices.\n    * @param extra  Param values which will overwrite Params in the copy.\n    */\n    override def copy(extra: ParamMap): Estimator[NullColumnModel] = defaultCopy(extra)\n\n    \n    override def transformSchema(schema: StructType): StructType = {\n        // Validate input type.\n        // Input type validation is technically optional, but it is a good practice since it catches\n        // schema errors early on.\n        $(inputCols).foreach((inputColName: String) => {\n            require(schema.fieldNames.contains(inputColName), s\"Input column $inputColName must exist.\")\n        })\n        \n        StructType(\n            schema.fields\n        )\n    }\n    \n    override def fit(dataset: Dataset[_]): NullColumnModel = {\n        copyValues(\n            new NullColumnModel(\n                uid + \"_model\"\n            ).setParent(this)\n        )\n    }\n}\n\n// Companion object enables deserialization of MyCommonParams\nobject NullColumnEncoder extends DefaultParamsReadable[NullColumnEncoder]",
       "user": "anonymous",
+      "dateUpdated": "2022-05-21T19:39:12+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -1957,19 +1955,6 @@
         "params": {},
         "forms": {}
       },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1653161950841_1114321186",
-      "id": "paragraph_1653161950841_1114321186",
-      "dateCreated": "2022-05-21T19:39:10+0000",
-      "status": "FINISHED",
-      "focus": true,
-      "$$hashKey": "object:129008",
-      "text": "class NullColumnEncoder(override val uid: String) extends Estimator[NullColumnModel]\n    with DefaultParamsWritable // Enables Serialization of MyCommonParams\n    with NullColumnParams {\n    \n    import spark.implicits._\n\n    def this() = this(Identifiable.randomUID(\"NullColumnEncoder\"))\n\n    /**\n    * Creates a copy of this instance.\n    * Requirements:\n    *  - The copy must have the same UID.\n    *  - The copy must have the same Params, with some possibly overwritten by the `extra`\n    *    argument.\n    *  - This should do a deep copy of any data members which are mutable.  That said,\n    *    Transformers should generally be immutable (except for Params), so the `defaultCopy`\n    *    method often suffices.\n    * @param extra  Param values which will overwrite Params in the copy.\n    */\n    override def copy(extra: ParamMap): Estimator[NullColumnModel] = defaultCopy(extra)\n\n    \n    override def transformSchema(schema: StructType): StructType = {\n        // Validate input type.\n        // Input type validation is technically optional, but it is a good practice since it catches\n        // schema errors early on.\n        $(inputCols).foreach((inputColName: String) => {\n            require(schema.fieldNames.contains(inputColName), s\"Input column $inputColName must exist.\")\n        })\n        \n        StructType(\n            schema.fields\n        )\n    }\n    \n    override def fit(dataset: Dataset[_]): NullColumnModel = {\n        copyValues(\n            new NullColumnModel(\n                uid + \"_model\"\n            ).setParent(this)\n        )\n    }\n}\n\n// Companion object enables deserialization of MyCommonParams\nobject NullColumnEncoder extends DefaultParamsReadable[NullColumnEncoder]",
-      "dateUpdated": "2022-05-21T19:39:12+0000",
-      "dateFinished": "2022-05-21T19:39:13+0000",
-      "dateStarted": "2022-05-21T19:39:12+0000",
       "results": {
         "code": "SUCCESS",
         "msg": [
@@ -1978,10 +1963,22 @@
             "data": "defined class NullColumnEncoder\ndefined object NullColumnEncoder\n"
           }
         ]
-      }
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1653161950841_1114321186",
+      "id": "paragraph_1653161950841_1114321186",
+      "dateCreated": "2022-05-21T19:39:10+0000",
+      "dateStarted": "2022-05-21T19:39:12+0000",
+      "dateFinished": "2022-05-21T19:39:13+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:718"
     },
     {
+      "text": "// Common Parameters\r\ntrait ArrayOneHotEncoderParams extends Params {\r\n    // Defining a Param requires 3 elements:\r\n    //  - Param definition\r\n    //  - Param getter method\r\n    //  - Param setter method\r\n    \r\n    /**---\r\n        * Param for input column names.\r\n    */\r\n    final val inputCols: StringArrayParam = new StringArrayParam(this, \"inputCols\", \"Input column names\")\r\n    \r\n    final def getInputCols: Array[String] = $(inputCols)\r\n    \r\n    final def setInputCols(value: Array[String]): this.type = set(inputCols, value)\r\n    \r\n    setDefault(inputCols -> Array.empty[String])\r\n    \r\n    /**---\r\n        * Param for output column names.\r\n    */\r\n    final val outputCols: StringArrayParam = new StringArrayParam(this, \"outputCols\", \"Output column names\")\r\n    \r\n    final def getOutputCols: Array[String] = $(outputCols)\r\n    \r\n    final def setOutputCols(value: Array[String]): this.type = set(outputCols, value)\r\n    \r\n    setDefault(outputCols -> Array.empty[String])\r\n    \r\n\r\n    /**---\r\n        * The scheme of the columns, if know. Otherwise it is created whan fit\r\n    */\r\n\r\n    final val knownCols: StringArrayParam = new StringArrayParam(this, \"knownCols\", \"The scheme of the columns, if know(arrays of string like know_column_name:know_column_value)\")\r\n    \r\n    final def getKnownCols: Array[String] = $(knownCols)\r\n    \r\n    final def setKnownCols(value: Array[String]): this.type = set(knownCols, value)\r\n    \r\n    setDefault(knownCols -> Array.empty[String])\r\n\r\n    \r\n    /**---\r\n       * The name of the columns for which you want to create new columns\r\n    */\r\n    \r\n    final val createColsByValues: StringArrayParam = new StringArrayParam(this, \"createColsByValues\", \"The name of the columns for which you want to create new columns\")\r\n    \r\n    final def getCreateColsByValues: Array[String] = $(createColsByValues)\r\n    \r\n    final def setCreateColsByValues(value: Array[String]): this.type = set(createColsByValues, value)\r\n    \r\n    setDefault(createColsByValues -> Array.empty[String])\r\n    \r\n}",
       "user": "anonymous",
+      "dateUpdated": "2022-05-21T19:39:24+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -2000,19 +1997,6 @@
         "params": {},
         "forms": {}
       },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1653161955018_679552300",
-      "id": "paragraph_1653161955018_679552300",
-      "dateCreated": "2022-05-21T19:39:15+0000",
-      "status": "FINISHED",
-      "focus": true,
-      "$$hashKey": "object:129102",
-      "text": "// Common Parameters\r\ntrait ArrayOneHotEncoderParams extends Params {\r\n    // Defining a Param requires 3 elements:\r\n    //  - Param definition\r\n    //  - Param getter method\r\n    //  - Param setter method\r\n    \r\n    /**---\r\n        * Param for input column names.\r\n    */\r\n    final val inputCols: StringArrayParam = new StringArrayParam(this, \"inputCols\", \"Input column names\")\r\n    \r\n    final def getInputCols: Array[String] = $(inputCols)\r\n    \r\n    final def setInputCols(value: Array[String]): this.type = set(inputCols, value)\r\n    \r\n    setDefault(inputCols -> Array.empty[String])\r\n    \r\n    /**---\r\n        * Param for output column names.\r\n    */\r\n    final val outputCols: StringArrayParam = new StringArrayParam(this, \"outputCols\", \"Output column names\")\r\n    \r\n    final def getOutputCols: Array[String] = $(outputCols)\r\n    \r\n    final def setOutputCols(value: Array[String]): this.type = set(outputCols, value)\r\n    \r\n    setDefault(outputCols -> Array.empty[String])\r\n    \r\n\r\n    /**---\r\n        * The scheme of the columns, if know. Otherwise it is created whan fit\r\n    */\r\n\r\n    final val knownCols: StringArrayParam = new StringArrayParam(this, \"knownCols\", \"The scheme of the columns, if know(arrays of string like know_column_name:know_column_value)\")\r\n    \r\n    final def getKnownCols: Array[String] = $(knownCols)\r\n    \r\n    final def setKnownCols(value: Array[String]): this.type = set(knownCols, value)\r\n    \r\n    setDefault(knownCols -> Array.empty[String])\r\n\r\n    \r\n    /**---\r\n       * The name of the columns for which you want to create new columns\r\n    */\r\n    \r\n    final val createColsByValues: StringArrayParam = new StringArrayParam(this, \"createColsByValues\", \"The name of the columns for which you want to create new columns\")\r\n    \r\n    final def getCreateColsByValues: Array[String] = $(createColsByValues)\r\n    \r\n    final def setCreateColsByValues(value: Array[String]): this.type = set(createColsByValues, value)\r\n    \r\n    setDefault(createColsByValues -> Array.empty[String])\r\n    \r\n}",
-      "dateUpdated": "2022-05-21T19:39:24+0000",
-      "dateFinished": "2022-05-21T19:39:24+0000",
-      "dateStarted": "2022-05-21T19:39:24+0000",
       "results": {
         "code": "SUCCESS",
         "msg": [
@@ -2021,10 +2005,22 @@
             "data": "defined trait ArrayOneHotEncoderParams\n"
           }
         ]
-      }
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1653161955018_679552300",
+      "id": "paragraph_1653161955018_679552300",
+      "dateCreated": "2022-05-21T19:39:15+0000",
+      "dateStarted": "2022-05-21T19:39:24+0000",
+      "dateFinished": "2022-05-21T19:39:24+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:719"
     },
     {
+      "text": "class ArrayOneHotEncoderModel(override val uid: String, knowColsMap: Map[String, Array[String]]) extends Model[ArrayOneHotEncoderModel]\n    with DefaultParamsWritable // Enables Serialization\n    with ArrayOneHotEncoderParams {\n    \n    import spark.implicits._\n    import scala.collection.mutable.{ArrayBuffer}\n    \n    //---\n    private var newCols: ArrayBuffer[StructField] = ArrayBuffer.empty[StructField]\n    \n    \n    // my functions\n    \n            \n    private def bool2double(b:Boolean) = if (b) 1.0 else 0.0\n    \n    private def arrayToCol(df:DataFrame, inputColumn:String, outputColumn:String, arrVal:Array[String]): DataFrame = {\n        if($(createColsByValues).contains(inputColumn)){\n            arrVal.foldLeft(df){\n                case (acc, arr) => {\n                    val columnName:String = outputColumn+\"_\"+arr\n                    newCols+=StructField(columnName, DoubleType, true) \n                    acc.withColumn(columnName, array_contains(col(inputColumn),arr).cast(DoubleType))\n                }\n            }\n        }else{\n            val containArray = udf[Vector, Array[String]](arr=>{\n                                                                    Vectors.dense(\n                                                                        arrVal.map(c=>{\n                                                                            bool2double(arr.contains(c))\n                                                                        })\n                                                                    )\n                                                                })\n            newCols+=StructField(outputColumn, DoubleType, true) \n            df.withColumn(\n                outputColumn,\n                containArray( col(inputColumn) )\n            )\n        }\n    }\n    \n    private def getArgName(df:DataFrame, colName:String): Array[String] = {\n        if (knowColsMap.contains(colName)){\n            knowColsMap(colName)\n        }else{\n            Array.empty[String]\n        }\n    }\n    \n    \n    // Transformer requires 3 methods:\n    //  - transform\n    //  - transformSchema\n    //  - copy\n\n    \n    /**\n    * This method implements the main transformation.\n    * Its required semantics are fully defined by the method API: take a Dataset or DataFrame,\n    * and return a DataFrame.\n    */\n    override def transform(dataset: Dataset[_]): DataFrame = {\n        val colsMap=($(inputCols) zip $(outputCols)).toMap\n\n        colsMap.foldLeft(dataset.toDF){\n            case (acc, columnMap) => {\n                val argName: Array[String] = getArgName(df=acc,colName=columnMap._1)\n                arrayToCol(df=acc, inputColumn=columnMap._1, outputColumn=columnMap._2, arrVal=argName)\n            }\n        }\n    }\n    \n    /*\n    * Check transform validity and derive the output schema from the input schema.\n    *\n    * We check validity for interactions between parameters during `transformSchema` and\n    * raise an exception if any parameter value is invalid. Parameter value checks which\n    * do not depend on other parameters are handled by `Param.validate()`.\n    *\n    * Typical implementation should first conduct verification on schema change and parameter\n    * validity, including complex parameter interaction checks.\n    */\n    \n    override def transformSchema(schema: StructType): StructType = {\n        // Validate input type.\n        // Input type validation is technically optional, but it is a good practice since it catches\n        // schema errors early on.\n        $(inputCols).foreach((inputColName: String) => {\n            require(schema.fieldNames.contains(inputColName), s\"Input column $inputColName must exist.\")\n        })\n        \n        StructType(\n            schema.fields ++ newCols\n        )\n    }\n    /**\n    * Creates a copy of this instance.\n    * Requirements:\n    *  - The copy must have the same UID.\n    *  - The copy must have the same Params, with some possibly overwritten by the `extra`\n    *    argument.\n    *  - This should do a deep copy of any data members which are mutable.  That said,\n    *    Transformers should generally be immutable (except for Params), so the `defaultCopy`\n    *    method often suffices.\n    * @param extra  Param values which will overwrite Params in the copy.\n    */\n    override def copy(extra: ParamMap): ArrayOneHotEncoderModel = defaultCopy(extra)\n}\n\nobject ArrayOneHotEncoderModel extends DefaultParamsReadable[ArrayOneHotEncoderModel]",
       "user": "anonymous",
+      "dateUpdated": "2022-05-21T19:40:10+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -2043,19 +2039,6 @@
         "params": {},
         "forms": {}
       },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1653161966537_1449481009",
-      "id": "paragraph_1653161966537_1449481009",
-      "dateCreated": "2022-05-21T19:39:26+0000",
-      "status": "FINISHED",
-      "focus": true,
-      "$$hashKey": "object:129196",
-      "text": "class ArrayOneHotEncoderModel(override val uid: String, knowColsMap: Map[String, Array[String]]) extends Model[ArrayOneHotEncoderModel]\n    with DefaultParamsWritable // Enables Serialization\n    with ArrayOneHotEncoderParams {\n    \n    import spark.implicits._\n    import scala.collection.mutable.{ArrayBuffer}\n    \n    //---\n    private var newCols: ArrayBuffer[StructField] = ArrayBuffer.empty[StructField]\n    \n    \n    // my functions\n    \n            \n    private def bool2double(b:Boolean) = if (b) 1.0 else 0.0\n    \n    private def arrayToCol(df:DataFrame, inputColumn:String, outputColumn:String, arrVal:Array[String]): DataFrame = {\n        if($(createColsByValues).contains(inputColumn)){\n            arrVal.foldLeft(df){\n                case (acc, arr) => {\n                    val columnName:String = outputColumn+\"_\"+arr\n                    newCols+=StructField(columnName, DoubleType, true) \n                    acc.withColumn(columnName, array_contains(col(inputColumn),arr).cast(DoubleType))\n                }\n            }\n        }else{\n            val containArray = udf[Vector, Array[String]](arr=>{\n                                                                    Vectors.dense(\n                                                                        arrVal.map(c=>{\n                                                                            bool2double(arr.contains(c))\n                                                                        })\n                                                                    )\n                                                                })\n            newCols+=StructField(outputColumn, DoubleType, true) \n            df.withColumn(\n                outputColumn,\n                containArray( col(inputColumn) )\n            )\n        }\n    }\n    \n    private def getArgName(df:DataFrame, colName:String): Array[String] = {\n        if (knowColsMap.contains(colName)){\n            knowColsMap(colName)\n        }else{\n            Array.empty[String]\n        }\n    }\n    \n    \n    // Transformer requires 3 methods:\n    //  - transform\n    //  - transformSchema\n    //  - copy\n\n    \n    /**\n    * This method implements the main transformation.\n    * Its required semantics are fully defined by the method API: take a Dataset or DataFrame,\n    * and return a DataFrame.\n    */\n    override def transform(dataset: Dataset[_]): DataFrame = {\n        val colsMap=($(inputCols) zip $(outputCols)).toMap\n\n        colsMap.foldLeft(dataset.toDF){\n            case (acc, columnMap) => {\n                val argName: Array[String] = getArgName(df=acc,colName=columnMap._1)\n                arrayToCol(df=acc, inputColumn=columnMap._1, outputColumn=columnMap._2, arrVal=argName)\n            }\n        }\n    }\n    \n    /*\n    * Check transform validity and derive the output schema from the input schema.\n    *\n    * We check validity for interactions between parameters during `transformSchema` and\n    * raise an exception if any parameter value is invalid. Parameter value checks which\n    * do not depend on other parameters are handled by `Param.validate()`.\n    *\n    * Typical implementation should first conduct verification on schema change and parameter\n    * validity, including complex parameter interaction checks.\n    */\n    \n    override def transformSchema(schema: StructType): StructType = {\n        // Validate input type.\n        // Input type validation is technically optional, but it is a good practice since it catches\n        // schema errors early on.\n        $(inputCols).foreach((inputColName: String) => {\n            require(schema.fieldNames.contains(inputColName), s\"Input column $inputColName must exist.\")\n        })\n        \n        StructType(\n            schema.fields ++ newCols\n        )\n    }\n    /**\n    * Creates a copy of this instance.\n    * Requirements:\n    *  - The copy must have the same UID.\n    *  - The copy must have the same Params, with some possibly overwritten by the `extra`\n    *    argument.\n    *  - This should do a deep copy of any data members which are mutable.  That said,\n    *    Transformers should generally be immutable (except for Params), so the `defaultCopy`\n    *    method often suffices.\n    * @param extra  Param values which will overwrite Params in the copy.\n    */\n    override def copy(extra: ParamMap): ArrayOneHotEncoderModel = defaultCopy(extra)\n}\n\nobject ArrayOneHotEncoderModel extends DefaultParamsReadable[ArrayOneHotEncoderModel]",
-      "dateUpdated": "2022-05-21T19:40:10+0000",
-      "dateFinished": "2022-05-21T19:40:11+0000",
-      "dateStarted": "2022-05-21T19:40:10+0000",
       "results": {
         "code": "SUCCESS",
         "msg": [
@@ -2064,10 +2047,22 @@
             "data": "defined class ArrayOneHotEncoderModel\ndefined object ArrayOneHotEncoderModel\n"
           }
         ]
-      }
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1653161966537_1449481009",
+      "id": "paragraph_1653161966537_1449481009",
+      "dateCreated": "2022-05-21T19:39:26+0000",
+      "dateStarted": "2022-05-21T19:40:10+0000",
+      "dateFinished": "2022-05-21T19:40:11+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:720"
     },
     {
+      "text": "class ArrayOneHotEncoder(override val uid: String) extends Estimator[ArrayOneHotEncoderModel]\n    with DefaultParamsWritable // Enables Serialization of MyCommonParams\n    with ArrayOneHotEncoderParams {\n    \n    import spark.implicits._\n\n    def this() = this(Identifiable.randomUID(\"OneHotEncoderExtended\"))\n    \n    private def knownColsMapParser(date: Array[String]): Map[String, Array[String]] = {\n        date.foldLeft(Map.empty[String, Array[String]]){\n            case (mp, arr)=>{\n                val pair = arr.split(\":\")\n                if(mp.contains(pair(0))){\n                    mp ++ Map(pair(0)->(mp(pair(0)):+pair(1)))\n                }else{\n                    mp ++ Map(pair(0)->Array(pair(1)))\n                }\n            }\n        }\n    }\n    \n\n    /**\n    * Creates a copy of this instance.\n    * Requirements:\n    *  - The copy must have the same UID.\n    *  - The copy must have the same Params, with some possibly overwritten by the `extra`\n    *    argument.\n    *  - This should do a deep copy of any data members which are mutable.  That said,\n    *    Transformers should generally be immutable (except for Params), so the `defaultCopy`\n    *    method often suffices.\n    * @param extra  Param values which will overwrite Params in the copy.\n    */\n    override def copy(extra: ParamMap): Estimator[ArrayOneHotEncoderModel] = defaultCopy(extra)\n\n    override def transformSchema(schema: StructType): StructType = {\n        // Validate input type.\n        // Input type validation is technically optional, but it is a good practice since it catches\n        // schema errors early on.\n        $(inputCols).foreach((inputColName: String) => {\n            require(schema.fieldNames.contains(inputColName), s\"Input column $inputColName must exist.\")\n        })\n        \n        StructType(\n            schema.fields\n        )\n    }\n    \n    override def fit(dataset: Dataset[_]): ArrayOneHotEncoderModel = {\n        \n        val knowColsMap: Map[String, Array[String]] = $(inputCols)\n            .foldLeft(\n                knownColsMapParser($(knownCols))\n            ){ case (mp, column)=>{\n                    if(!(mp.contains(column))){\n                        val argName: Array[String] = dataset.select(explode(col(column)))\n                                                .dropDuplicates()\n                                                .as[String]\n                                                .collect \n                        mp ++ Map(column->argName)\n                    }else{\n                        mp\n                    }\n                }\n            }\n\n        copyValues(\n            new ArrayOneHotEncoderModel(\n                uid + \"_model\",\n                knowColsMap\n            ).setParent(this)\n        )\n    }\n}\n// Companion object enables deserialization of MyCommonParams\nobject ArrayOneHotEncoder extends DefaultParamsReadable[ArrayOneHotEncoder]",
       "user": "anonymous",
+      "dateUpdated": "2022-05-21T19:40:26+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -2086,19 +2081,6 @@
         "params": {},
         "forms": {}
       },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1653162014946_536568988",
-      "id": "paragraph_1653162014946_536568988",
-      "dateCreated": "2022-05-21T19:40:14+0000",
-      "status": "FINISHED",
-      "focus": true,
-      "$$hashKey": "object:129317",
-      "text": "class ArrayOneHotEncoder(override val uid: String) extends Estimator[ArrayOneHotEncoderModel]\n    with DefaultParamsWritable // Enables Serialization of MyCommonParams\n    with ArrayOneHotEncoderParams {\n    \n    import spark.implicits._\n\n    def this() = this(Identifiable.randomUID(\"OneHotEncoderExtended\"))\n    \n    private def knownColsMapParser(date: Array[String]): Map[String, Array[String]] = {\n        date.foldLeft(Map.empty[String, Array[String]]){\n            case (mp, arr)=>{\n                val pair = arr.split(\":\")\n                if(mp.contains(pair(0))){\n                    mp ++ Map(pair(0)->(mp(pair(0)):+pair(1)))\n                }else{\n                    mp ++ Map(pair(0)->Array(pair(1)))\n                }\n            }\n        }\n    }\n    \n\n    /**\n    * Creates a copy of this instance.\n    * Requirements:\n    *  - The copy must have the same UID.\n    *  - The copy must have the same Params, with some possibly overwritten by the `extra`\n    *    argument.\n    *  - This should do a deep copy of any data members which are mutable.  That said,\n    *    Transformers should generally be immutable (except for Params), so the `defaultCopy`\n    *    method often suffices.\n    * @param extra  Param values which will overwrite Params in the copy.\n    */\n    override def copy(extra: ParamMap): Estimator[ArrayOneHotEncoderModel] = defaultCopy(extra)\n\n    override def transformSchema(schema: StructType): StructType = {\n        // Validate input type.\n        // Input type validation is technically optional, but it is a good practice since it catches\n        // schema errors early on.\n        $(inputCols).foreach((inputColName: String) => {\n            require(schema.fieldNames.contains(inputColName), s\"Input column $inputColName must exist.\")\n        })\n        \n        StructType(\n            schema.fields\n        )\n    }\n    \n    override def fit(dataset: Dataset[_]): ArrayOneHotEncoderModel = {\n        \n        val knowColsMap: Map[String, Array[String]] = $(inputCols)\n            .foldLeft(\n                knownColsMapParser($(knownCols))\n            ){ case (mp, column)=>{\n                    if(!(mp.contains(column))){\n                        val argName: Array[String] = dataset.select(explode(col(column)))\n                                                .dropDuplicates()\n                                                .as[String]\n                                                .collect \n                        mp ++ Map(column->argName)\n                    }else{\n                        mp\n                    }\n                }\n            }\n\n        copyValues(\n            new ArrayOneHotEncoderModel(\n                uid + \"_model\",\n                knowColsMap\n            ).setParent(this)\n        )\n    }\n}\n// Companion object enables deserialization of MyCommonParams\nobject ArrayOneHotEncoder extends DefaultParamsReadable[ArrayOneHotEncoder]",
-      "dateUpdated": "2022-05-21T19:40:26+0000",
-      "dateFinished": "2022-05-21T19:40:27+0000",
-      "dateStarted": "2022-05-21T19:40:26+0000",
       "results": {
         "code": "SUCCESS",
         "msg": [
@@ -2107,7 +2089,17 @@
             "data": "defined class ArrayOneHotEncoder\ndefined object ArrayOneHotEncoder\n"
           }
         ]
-      }
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1653162014946_536568988",
+      "id": "paragraph_1653162014946_536568988",
+      "dateCreated": "2022-05-21T19:40:14+0000",
+      "dateStarted": "2022-05-21T19:40:26+0000",
+      "dateFinished": "2022-05-21T19:40:27+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:721"
     },
     {
       "text": "// Create constant\n\nval label = \"churn_risk\"\n\nval nullTolerance = 1label\nval defaultMissingValue = -1.0\n\nval strategyMissingValue = \"mean\"",
@@ -2149,7 +2141,7 @@
       "dateStarted": "2022-05-21T19:17:05+0000",
       "dateFinished": "2022-05-21T19:17:06+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:85523"
+      "$$hashKey": "object:722"
     },
     {
       "text": "val defaultType = (\"Any\", \"unknown\")\n\nval colTypeName = List(\n    \"number\",\n    \"string\",\n    \"array\",\n    \"date\",\n    defaultType._2\n    )\n\nval colTypePattern = List(\n    \"(^Integer|^Long|^Double)Type\",\n    \"^StringType\",\n    \"(^Array.*)\",\n    \"^DateType\",\n    defaultType._1\n)",
@@ -2191,7 +2183,7 @@
       "dateStarted": "2022-05-21T19:51:01+0000",
       "dateFinished": "2022-05-21T19:51:02+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:85524"
+      "$$hashKey": "object:723"
     },
     {
       "text": "val typesMap = Map[String, (String, List[String])](\n    colTypePattern.zip(colTypeName).map{ case (typePattern, typeName) =>{\n        (\n            typePattern,\n            (typeName,List())\n        )\n    }}:_*\n)",
@@ -2233,7 +2225,7 @@
       "dateStarted": "2022-05-21T19:51:04+0000",
       "dateFinished": "2022-05-21T19:51:05+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:85525"
+      "$$hashKey": "object:724"
     },
     {
       "text": "def addType2Map(name:String, typeName:String, typesMap:Map[String, (String, List[String])], defaultType:String) = {\n    typesMap + typesMap.find(\n            _._1.r.findFirstIn(typeName).isDefined\n        ).map{ case (p,(n,l)) =>\n            (p, (n, l :+ name))\n        }.getOrElse(\n            (defaultType, typesMap(defaultType))\n        )\n}",
@@ -2275,10 +2267,12 @@
       "dateStarted": "2022-05-21T19:51:06+0000",
       "dateFinished": "2022-05-21T19:51:06+0000",
       "status": "FINISHED",
-      "$$hashKey": "object:85526"
+      "$$hashKey": "object:725"
     },
     {
+      "text": "val colTypesMap = dfTrain.dtypes.foldLeft(typesMap) { case (acc, (name, dtype)) =>{\n    addType2Map(\n        name=name,\n        typeName=dtype,\n        typesMap=acc,\n        defaultType=defaultType._1\n    )\n}}.values.toMap",
       "user": "anonymous",
+      "dateUpdated": "2022-05-21T19:51:37+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -2297,19 +2291,6 @@
         "params": {},
         "forms": {}
       },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1653160596476_602158596",
-      "id": "paragraph_1653160596476_602158596",
-      "dateCreated": "2022-05-21T19:16:36+0000",
-      "status": "FINISHED",
-      "focus": true,
-      "$$hashKey": "object:126796",
-      "text": "val colTypesMap = dfTrain.dtypes.foldLeft(typesMap) { case (acc, (name, dtype)) =>{\n    addType2Map(\n        name=name,\n        typeName=dtype,\n        typesMap=acc,\n        defaultType=defaultType._1\n    )\n}}.values.toMap",
-      "dateUpdated": "2022-05-21T19:51:37+0000",
-      "dateFinished": "2022-05-21T19:51:38+0000",
-      "dateStarted": "2022-05-21T19:51:37+0000",
       "results": {
         "code": "SUCCESS",
         "msg": [
@@ -2318,11 +2299,23 @@
             "data": "\u001b[1m\u001b[34mcolTypesMap\u001b[0m: \u001b[1m\u001b[32mscala.collection.immutable.Map[String,List[String]]\u001b[0m = Map(number -> List(instanceId_userId, instanceId_objectId, audit_pos, audit_timestamp, audit_timePassed, audit_resourceType, metadata_ownerId, metadata_createdAt, metadata_authorId, metadata_applicationId, metadata_numCompanions, metadata_numPhotos, metadata_numPolls, metadata_numSymbols, metadata_numTokens, metadata_numVideos, metadata_totalVideoLength, relationsMask, userOwnerCounters_USER_FEED_REMOVE, userOwnerCounters_USER_PROFILE_VIEW, userOwnerCounters_VOTE_POLL, userOwnerCounters_USER_SEND_MESSAGE, userOwnerCounters_USER_DELETE_MESSAGE, userOwnerCounters_USER_INTERNAL_LIKE, userOwnerCounters_USER_INTERNAL_UNLIKE, userOwnerCounters_USER_STATUS_COMMENT_CREATE, userOwnerCounters_PHOTO_COMMEN...\n"
           }
         ]
-      }
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1653160596476_602158596",
+      "id": "paragraph_1653160596476_602158596",
+      "dateCreated": "2022-05-21T19:16:36+0000",
+      "dateStarted": "2022-05-21T19:51:37+0000",
+      "dateFinished": "2022-05-21T19:51:38+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:726"
     },
     {
+      "text": "val colsNumberFullNull = dfTrain.select(\r\n                                colTypesMap(\"number\").map( \r\n                                    c => count(\r\n                                            when( col(c).isNotNull, c)\r\n                                         ).alias(c)\r\n                                ):_*\r\n                            ).first\r\n                            .getValuesMap[Long](colTypesMap(\"number\"))\r\n                            .filter { case (key, value) => value<nullTolerance }\r\n                            .keys.toList",
       "user": "anonymous",
-      "progress": 0,
+      "dateUpdated": "2022-05-21T19:51:40+0000",
+      "progress": 73,
       "config": {
         "colWidth": 12,
         "fontSize": 9,
@@ -2340,6 +2333,15 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mcolsNumberFullNull\u001b[0m: \u001b[1m\u001b[32mList[String]\u001b[0m = List(auditweights_isPymk, owner_is_deleted, auditweights_source_PROMO, owner_birth_date, ownerUserCounters_USER_STATUS_COMMENT_CREATE, ownerUserCounters_CREATE_LIKE, owner_ID_country, owner_region, ownerUserCounters_PHOTO_MARK_CREATE, ownerUserCounters_USER_FEED_REMOVE, ownerUserCounters_VIDEO, owner_is_abused, ownerUserCounters_CREATE_MOVIE, owner_ID_Location, ownerUserCounters_USER_INTERNAL_LIKE, owner_create_date, ownerUserCounters_CREATE_TOPIC, ownerUserCounters_UNKNOWN, ownerUserCounters_CREATE_IMAGE, auditweights_userOwner_USER_FORUM_MESSAGE_CREATE, ownerUserCounters_USER_PHOTO_ALBUM_COMMENT_CREATE, auditweights_partCtr, auditweights_closed, ownerUserCounters_USER_FORUM_MESSAGE_CREATE, ownerUserCounters_USER_DELETE_MESSA...\n"
+          }
+        ]
+      },
       "apps": [],
       "runtimeInfos": {
         "jobUrl": {
@@ -2350,7 +2352,7 @@
           "values": [
             {
               "jobUrl": "http://37479a3770b2:4040/jobs/job?id=12",
-              "$$hashKey": "object:130532"
+              "$$hashKey": "object:4090"
             }
           ],
           "interpreterSettingId": "spark"
@@ -2360,24 +2362,15 @@
       "jobName": "paragraph_1652641594711_1836766945",
       "id": "paragraph_1652641594711_1836766945",
       "dateCreated": "2022-05-15T19:06:34+0000",
-      "status": "FINISHED",
-      "$$hashKey": "object:85531",
-      "text": "val colsNumberFullNull = dfTrain.select(\r\n                                colTypesMap(\"number\").map( \r\n                                    c => count(\r\n                                            when( col(c).isNotNull, c)\r\n                                         ).alias(c)\r\n                                ):_*\r\n                            ).first\r\n                            .getValuesMap[Long](colTypesMap(\"number\"))\r\n                            .filter { case (key, value) => value<nullTolerance }\r\n                            .keys.toList",
-      "dateUpdated": "2022-05-21T19:51:40+0000",
-      "dateFinished": "2022-05-21T19:51:46+0000",
       "dateStarted": "2022-05-21T19:51:40+0000",
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "\u001b[1m\u001b[34mcolsNumberFullNull\u001b[0m: \u001b[1m\u001b[32mList[String]\u001b[0m = List(auditweights_isPymk, owner_is_deleted, auditweights_source_PROMO, owner_birth_date, ownerUserCounters_USER_STATUS_COMMENT_CREATE, ownerUserCounters_CREATE_LIKE, owner_ID_country, owner_region, ownerUserCounters_PHOTO_MARK_CREATE, ownerUserCounters_USER_FEED_REMOVE, ownerUserCounters_VIDEO, owner_is_abused, ownerUserCounters_CREATE_MOVIE, owner_ID_Location, ownerUserCounters_USER_INTERNAL_LIKE, owner_create_date, ownerUserCounters_CREATE_TOPIC, ownerUserCounters_UNKNOWN, ownerUserCounters_CREATE_IMAGE, auditweights_userOwner_USER_FORUM_MESSAGE_CREATE, ownerUserCounters_USER_PHOTO_ALBUM_COMMENT_CREATE, auditweights_partCtr, auditweights_closed, ownerUserCounters_USER_FORUM_MESSAGE_CREATE, ownerUserCounters_USER_DELETE_MESSA...\n"
-          }
-        ]
-      }
+      "dateFinished": "2022-05-21T19:51:46+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:727"
     },
     {
+      "text": "val colsNumberNotFullNull = colTypesMap(\"number\") diff colsNumberFullNull",
       "user": "anonymous",
+      "dateUpdated": "2022-05-21T19:51:43+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -2396,19 +2389,6 @@
         "params": {},
         "forms": {}
       },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1653161345039_52804485",
-      "id": "paragraph_1653161345039_52804485",
-      "dateCreated": "2022-05-21T19:29:05+0000",
-      "status": "FINISHED",
-      "focus": true,
-      "$$hashKey": "object:128120",
-      "text": "val colsNumberNotFullNull = colTypesMap(\"number\") diff colsNumberFullNull",
-      "dateUpdated": "2022-05-21T19:51:43+0000",
-      "dateFinished": "2022-05-21T19:51:46+0000",
-      "dateStarted": "2022-05-21T19:51:43+0000",
       "results": {
         "code": "SUCCESS",
         "msg": [
@@ -2417,10 +2397,22 @@
             "data": "\u001b[1m\u001b[34mcolsNumberNotFullNull\u001b[0m: \u001b[1m\u001b[32mList[String]\u001b[0m = List(instanceId_userId, instanceId_objectId, audit_pos, audit_timestamp, audit_timePassed, audit_resourceType, metadata_ownerId, metadata_createdAt, metadata_authorId, metadata_applicationId, metadata_numCompanions, metadata_numPhotos, metadata_numPolls, metadata_numSymbols, metadata_numTokens, metadata_numVideos, metadata_totalVideoLength, userOwnerCounters_USER_FEED_REMOVE, userOwnerCounters_USER_PROFILE_VIEW, userOwnerCounters_VOTE_POLL, userOwnerCounters_USER_SEND_MESSAGE, userOwnerCounters_USER_DELETE_MESSAGE, userOwnerCounters_USER_INTERNAL_LIKE, userOwnerCounters_USER_INTERNAL_UNLIKE, userOwnerCounters_USER_STATUS_COMMENT_CREATE, userOwnerCounters_PHOTO_COMMENT_CREATE, userOwnerCounters_MOVIE_COMMENT_CREATE, userOwne...\n"
           }
         ]
-      }
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1653161345039_52804485",
+      "id": "paragraph_1653161345039_52804485",
+      "dateCreated": "2022-05-21T19:29:05+0000",
+      "dateStarted": "2022-05-21T19:51:43+0000",
+      "dateFinished": "2022-05-21T19:51:46+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:728"
     },
     {
+      "text": "val outputColsStringIndexed     = colTypesMap(\"string\").map(_+\"_indexed\").toArray\nval outputColsFullNull          = colsNumberFullNull.map(_+\"_null\").toArray\nval outputColsNumberImputedMean = colsNumberNotFullNull.map(_+\"_imputed_\"+strategyMissingValue).toArray\nval outputColsArray             = colTypesMap(\"array\").map(_+\"_oh\").toArray\n\nval inputColsVA = outputColsStringIndexed ++ outputColsFullNull ++ outputColsNumberImputedMean ++ outputColsArray",
       "user": "anonymous",
+      "dateUpdated": "2022-05-21T20:02:02+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -2439,19 +2431,6 @@
         "params": {},
         "forms": {}
       },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1653157667212_664098451",
-      "id": "paragraph_1653157667212_664098451",
-      "dateCreated": "2022-05-21T18:27:47+0000",
-      "status": "FINISHED",
-      "focus": true,
-      "$$hashKey": "object:122318",
-      "text": "val outputColsStringIndexed     = colTypesMap(\"string\").map(_+\"_indexed\").toArray\nval outputColsFullNull          = colsNumberFullNull.map(_+\"_null\").toArray\nval outputColsNumberImputedMean = colsNumberNotFullNull.map(_+\"_imputed_\"+strategyMissingValue).toArray\nval outputColsArray             = colTypesMap(\"array\").map(_+\"_oh\").toArray\n\nval inputColsVA = outputColsStringIndexed ++ outputColsFullNull ++ outputColsNumberImputedMean ++ outputColsArray",
-      "dateUpdated": "2022-05-21T20:02:02+0000",
-      "dateFinished": "2022-05-21T20:02:02+0000",
-      "dateStarted": "2022-05-21T20:02:02+0000",
       "results": {
         "code": "SUCCESS",
         "msg": [
@@ -2460,10 +2439,22 @@
             "data": "\u001b[1m\u001b[34moutputColsStringIndexed\u001b[0m: \u001b[1m\u001b[32mArray[String]\u001b[0m = Array(instanceId_objectType_indexed, audit_clientType_indexed, audit_experiment_indexed, metadata_ownerType_indexed, metadata_platform_indexed, membership_status_indexed)\n\u001b[1m\u001b[34moutputColsFullNull\u001b[0m: \u001b[1m\u001b[32mArray[String]\u001b[0m = Array(auditweights_isPymk_null, owner_is_deleted_null, auditweights_source_PROMO_null, owner_birth_date_null, ownerUserCounters_USER_STATUS_COMMENT_CREATE_null, ownerUserCounters_CREATE_LIKE_null, owner_ID_country_null, owner_region_null, ownerUserCounters_PHOTO_MARK_CREATE_null, ownerUserCounters_USER_FEED_REMOVE_null, ownerUserCounters_VIDEO_null, owner_is_abused_null, ownerUserCounters_CREATE_MOVIE_null, owner_ID_Location_null, ownerUserCounters_USER_INTERNAL_LIKE_null, owner_create_date_n...\n"
           }
         ]
-      }
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1653157667212_664098451",
+      "id": "paragraph_1653157667212_664098451",
+      "dateCreated": "2022-05-21T18:27:47+0000",
+      "dateStarted": "2022-05-21T20:02:02+0000",
+      "dateFinished": "2022-05-21T20:02:02+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:729"
     },
     {
+      "text": "val strategyNumberImputer = new Imputer()\n  .setInputCols(colsNumberNotFullNull.toArray)\n  .setOutputCols(outputColsNumberImputedMean)\n  .setStrategy(strategyMissingValue)",
       "user": "anonymous",
+      "dateUpdated": "2022-05-21T20:02:07+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -2482,19 +2473,6 @@
         "params": {},
         "forms": {}
       },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1653162847828_501171363",
-      "id": "paragraph_1653162847828_501171363",
-      "dateCreated": "2022-05-21T19:54:07+0000",
-      "status": "FINISHED",
-      "focus": true,
-      "$$hashKey": "object:130799",
-      "text": "val strategyNumberImputer = new Imputer()\n  .setInputCols(colsNumberNotFullNull.toArray)\n  .setOutputCols(outputColsNumberImputedMean)\n  .setStrategy(strategyMissingValue)",
-      "dateUpdated": "2022-05-21T20:02:07+0000",
-      "dateFinished": "2022-05-21T20:02:07+0000",
-      "dateStarted": "2022-05-21T20:02:07+0000",
       "results": {
         "code": "SUCCESS",
         "msg": [
@@ -2503,10 +2481,22 @@
             "data": "\u001b[1m\u001b[34mstrategyNumberImputer\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.ml.feature.Imputer\u001b[0m = imputer_183512b0c195\n"
           }
         ]
-      }
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1653162847828_501171363",
+      "id": "paragraph_1653162847828_501171363",
+      "dateCreated": "2022-05-21T19:54:07+0000",
+      "dateStarted": "2022-05-21T20:02:07+0000",
+      "dateFinished": "2022-05-21T20:02:07+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:730"
     },
     {
+      "text": "val nullColumnEncoder = new NullColumnEncoder()\n    .setInputCols(colsNumberFullNull.toArray)\n    .setOutputCols(outputColsFullNull)\n    .setMissingValue(defaultMissingValue)",
       "user": "anonymous",
+      "dateUpdated": "2022-05-21T20:02:18+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -2525,19 +2515,6 @@
         "params": {},
         "forms": {}
       },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1653162848935_1550270815",
-      "id": "paragraph_1653162848935_1550270815",
-      "dateCreated": "2022-05-21T19:54:08+0000",
-      "status": "FINISHED",
-      "focus": true,
-      "$$hashKey": "object:130868",
-      "text": "val nullColumnEncoder = new NullColumnEncoder()\n    .setInputCols(colsNumberFullNull.toArray)\n    .setOutputCols(outputColsFullNull)\n    .setMissingValue(defaultMissingValue)",
-      "dateUpdated": "2022-05-21T20:02:18+0000",
-      "dateFinished": "2022-05-21T20:02:18+0000",
-      "dateStarted": "2022-05-21T20:02:18+0000",
       "results": {
         "code": "SUCCESS",
         "msg": [
@@ -2546,10 +2523,22 @@
             "data": "\u001b[1m\u001b[34mnullColumnEncoder\u001b[0m: \u001b[1m\u001b[32mNullColumnEncoder\u001b[0m = NullColumnEncoder_2f85b7c4c7a8\n"
           }
         ]
-      }
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1653162848935_1550270815",
+      "id": "paragraph_1653162848935_1550270815",
+      "dateCreated": "2022-05-21T19:54:08+0000",
+      "dateStarted": "2022-05-21T20:02:18+0000",
+      "dateFinished": "2022-05-21T20:02:18+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:731"
     },
     {
+      "text": "val stringIndexer = new StringIndexer()\n    .setInputCols(colTypesMap(\"string\").toArray)\n    .setOutputCols(outputColsStringIndexed)\n    .setHandleInvalid(\"keep\")",
       "user": "anonymous",
+      "dateUpdated": "2022-05-21T20:02:53+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -2568,19 +2557,6 @@
         "params": {},
         "forms": {}
       },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1653162849641_2004562398",
-      "id": "paragraph_1653162849641_2004562398",
-      "dateCreated": "2022-05-21T19:54:09+0000",
-      "status": "FINISHED",
-      "focus": true,
-      "$$hashKey": "object:130937",
-      "text": "val stringIndexer = new StringIndexer()\n    .setInputCols(colTypesMap(\"string\").toArray)\n    .setOutputCols(outputColsStringIndexed)\n    .setHandleInvalid(\"keep\")",
-      "dateUpdated": "2022-05-21T20:02:53+0000",
-      "dateFinished": "2022-05-21T20:02:53+0000",
-      "dateStarted": "2022-05-21T20:02:53+0000",
       "results": {
         "code": "SUCCESS",
         "msg": [
@@ -2589,10 +2565,22 @@
             "data": "\u001b[1m\u001b[34mstringIndexer\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.ml.feature.StringIndexer\u001b[0m = strIdx_8b11acd4c7f6\n"
           }
         ]
-      }
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1653162849641_2004562398",
+      "id": "paragraph_1653162849641_2004562398",
+      "dateCreated": "2022-05-21T19:54:09+0000",
+      "dateStarted": "2022-05-21T20:02:53+0000",
+      "dateFinished": "2022-05-21T20:02:53+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:732"
     },
     {
+      "text": "colTypesMap(\"array\").toArray",
       "user": "anonymous",
+      "dateUpdated": "2022-05-21T20:03:43+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -2611,19 +2599,6 @@
         "params": {},
         "forms": {}
       },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1653163396611_1741772039",
-      "id": "paragraph_1653163396611_1741772039",
-      "dateCreated": "2022-05-21T20:03:16+0000",
-      "status": "FINISHED",
-      "focus": true,
-      "$$hashKey": "object:132237",
-      "text": "colTypesMap(\"array\").toArray",
-      "dateUpdated": "2022-05-21T20:03:43+0000",
-      "dateFinished": "2022-05-21T20:03:43+0000",
-      "dateStarted": "2022-05-21T20:03:43+0000",
       "results": {
         "code": "SUCCESS",
         "msg": [
@@ -2632,10 +2607,22 @@
             "data": "\u001b[1m\u001b[34mres60\u001b[0m: \u001b[1m\u001b[32mArray[String]\u001b[0m = Array(metadata_options, feedback)\n"
           }
         ]
-      }
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1653163396611_1741772039",
+      "id": "paragraph_1653163396611_1741772039",
+      "dateCreated": "2022-05-21T20:03:16+0000",
+      "dateStarted": "2022-05-21T20:03:43+0000",
+      "dateFinished": "2022-05-21T20:03:43+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:733"
     },
     {
+      "text": "val arrayColumnsEncoder = new ArrayOneHotEncoder()\n    .setInputCols(\n        colTypesMap(\"array\").toArray\n    ).setOutputCols(outputColsArray)",
       "user": "anonymous",
+      "dateUpdated": "2022-05-21T20:03:45+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -2654,19 +2641,6 @@
         "params": {},
         "forms": {}
       },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1653162850340_1200680356",
-      "id": "paragraph_1653162850340_1200680356",
-      "dateCreated": "2022-05-21T19:54:10+0000",
-      "status": "FINISHED",
-      "focus": true,
-      "$$hashKey": "object:131006",
-      "text": "val arrayColumnsEncoder = new ArrayOneHotEncoder()\n    .setInputCols(\n        colTypesMap(\"array\").toArray\n    ).setOutputCols(outputColsArray)",
-      "dateUpdated": "2022-05-21T20:03:45+0000",
-      "dateFinished": "2022-05-21T20:03:45+0000",
-      "dateStarted": "2022-05-21T20:03:45+0000",
       "results": {
         "code": "SUCCESS",
         "msg": [
@@ -2675,10 +2649,22 @@
             "data": "\u001b[1m\u001b[34marrayColumnsEncoder\u001b[0m: \u001b[1m\u001b[32mArrayOneHotEncoder\u001b[0m = OneHotEncoderExtended_b301c251b812\n"
           }
         ]
-      }
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1653162850340_1200680356",
+      "id": "paragraph_1653162850340_1200680356",
+      "dateCreated": "2022-05-21T19:54:10+0000",
+      "dateStarted": "2022-05-21T20:03:45+0000",
+      "dateFinished": "2022-05-21T20:03:45+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:734"
     },
     {
+      "text": "val pipelineFeatureTransform = new Pipeline()\r\n    .setStages(\r\n        Array(\r\n            nullColumnEncoder,\r\n            strategyNumberImputer,\r\n            arrayColumnsEncoder,\r\n            stringIndexer\r\n        )\r\n    )",
       "user": "anonymous",
+      "dateUpdated": "2022-05-21T20:03:58+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -2697,19 +2683,6 @@
         "params": {},
         "forms": {}
       },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1653162851031_364788558",
-      "id": "paragraph_1653162851031_364788558",
-      "dateCreated": "2022-05-21T19:54:11+0000",
-      "status": "FINISHED",
-      "focus": true,
-      "$$hashKey": "object:131075",
-      "text": "val pipelineFeatureTransform = new Pipeline()\r\n    .setStages(\r\n        Array(\r\n            nullColumnEncoder,\r\n            strategyNumberImputer,\r\n            arrayColumnsEncoder,\r\n            stringIndexer\r\n        )\r\n    )",
-      "dateUpdated": "2022-05-21T20:03:58+0000",
-      "dateFinished": "2022-05-21T20:03:58+0000",
-      "dateStarted": "2022-05-21T20:03:58+0000",
       "results": {
         "code": "SUCCESS",
         "msg": [
@@ -2718,10 +2691,22 @@
             "data": "\u001b[1m\u001b[34mpipelineFeatureTransform\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.ml.Pipeline\u001b[0m = pipeline_936d2bedd3c1\n"
           }
         ]
-      }
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1653162851031_364788558",
+      "id": "paragraph_1653162851031_364788558",
+      "dateCreated": "2022-05-21T19:54:11+0000",
+      "dateStarted": "2022-05-21T20:03:58+0000",
+      "dateFinished": "2022-05-21T20:03:58+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:735"
     },
     {
+      "text": "val vectorAssembler = new VectorAssembler()\n    .setInputCols(inputColsVA)\n    .setOutputCol(\"features\")",
       "user": "anonymous",
+      "dateUpdated": "2022-05-21T20:04:16+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -2740,19 +2725,6 @@
         "params": {},
         "forms": {}
       },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1653163342434_841637385",
-      "id": "paragraph_1653163342434_841637385",
-      "dateCreated": "2022-05-21T20:02:22+0000",
-      "status": "FINISHED",
-      "focus": true,
-      "$$hashKey": "object:131998",
-      "text": "val vectorAssembler = new VectorAssembler()\n    .setInputCols(inputColsVA)\n    .setOutputCol(\"features\")",
-      "dateUpdated": "2022-05-21T20:04:16+0000",
-      "dateFinished": "2022-05-21T20:04:16+0000",
-      "dateStarted": "2022-05-21T20:04:16+0000",
       "results": {
         "code": "SUCCESS",
         "msg": [
@@ -2761,10 +2733,22 @@
             "data": "\u001b[1m\u001b[34mvectorAssembler\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.ml.feature.VectorAssembler\u001b[0m = VectorAssembler: uid=vecAssembler_49c254786c2f, handleInvalid=error, numInputCols=169\n"
           }
         ]
-      }
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1653163342434_841637385",
+      "id": "paragraph_1653163342434_841637385",
+      "dateCreated": "2022-05-21T20:02:22+0000",
+      "dateStarted": "2022-05-21T20:04:16+0000",
+      "dateFinished": "2022-05-21T20:04:16+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:736"
     },
     {
+      "text": "val scaler = new StandardScaler()\n    .setInputCol(\"features\")\n    .setOutputCol(\"scaledFeatures\")\n    .setWithStd(true)\n    .setWithMean(false)",
       "user": "anonymous",
+      "dateUpdated": "2022-05-21T20:04:34+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -2783,19 +2767,6 @@
         "params": {},
         "forms": {}
       },
-      "apps": [],
-      "runtimeInfos": {},
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1653163343213_1019367578",
-      "id": "paragraph_1653163343213_1019367578",
-      "dateCreated": "2022-05-21T20:02:23+0000",
-      "status": "FINISHED",
-      "focus": true,
-      "$$hashKey": "object:132067",
-      "text": "val scaler = new StandardScaler()\n    .setInputCol(\"features\")\n    .setOutputCol(\"scaledFeatures\")\n    .setWithStd(true)\n    .setWithMean(false)",
-      "dateUpdated": "2022-05-21T20:04:34+0000",
-      "dateFinished": "2022-05-21T20:04:34+0000",
-      "dateStarted": "2022-05-21T20:04:34+0000",
       "results": {
         "code": "SUCCESS",
         "msg": [
@@ -2804,11 +2775,23 @@
             "data": "\u001b[1m\u001b[34mscaler\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.ml.feature.StandardScaler\u001b[0m = stdScal_69f107b9e2ba\n"
           }
         ]
-      }
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1653163343213_1019367578",
+      "id": "paragraph_1653163343213_1019367578",
+      "dateCreated": "2022-05-21T20:02:23+0000",
+      "dateStarted": "2022-05-21T20:04:34+0000",
+      "dateFinished": "2022-05-21T20:04:34+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:737"
     },
     {
+      "text": "val pipelineFeatureCreate = new Pipeline()\r\n    .setStages(\r\n        Array(\r\n            pipelineFeatureTransform.fit(dfTrain),\r\n            vectorAssembler,\r\n            scaler\r\n        )\r\n    )",
       "user": "anonymous",
-      "progress": 0,
+      "dateUpdated": "2022-05-21T20:04:58+0000",
+      "progress": 78,
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -2825,6 +2808,15 @@
       "settings": {
         "params": {},
         "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mpipelineFeatureCreate\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.ml.Pipeline\u001b[0m = pipeline_9db1d8998752\n"
+          }
+        ]
       },
       "apps": [],
       "runtimeInfos": {
@@ -2836,31 +2828,31 @@
           "values": [
             {
               "jobUrl": "http://37479a3770b2:4040/jobs/job?id=27",
-              "$$hashKey": "object:132867"
+              "$$hashKey": "object:4536"
             },
             {
               "jobUrl": "http://37479a3770b2:4040/jobs/job?id=28",
-              "$$hashKey": "object:132868"
+              "$$hashKey": "object:4537"
             },
             {
               "jobUrl": "http://37479a3770b2:4040/jobs/job?id=29",
-              "$$hashKey": "object:132869"
+              "$$hashKey": "object:4538"
             },
             {
               "jobUrl": "http://37479a3770b2:4040/jobs/job?id=30",
-              "$$hashKey": "object:132870"
+              "$$hashKey": "object:4539"
             },
             {
               "jobUrl": "http://37479a3770b2:4040/jobs/job?id=31",
-              "$$hashKey": "object:132871"
+              "$$hashKey": "object:4540"
             },
             {
               "jobUrl": "http://37479a3770b2:4040/jobs/job?id=32",
-              "$$hashKey": "object:132872"
+              "$$hashKey": "object:4541"
             },
             {
               "jobUrl": "http://37479a3770b2:4040/jobs/job?id=33",
-              "$$hashKey": "object:132873"
+              "$$hashKey": "object:4542"
             }
           ],
           "interpreterSettingId": "spark"
@@ -2870,25 +2862,15 @@
       "jobName": "paragraph_1653163343827_256562257",
       "id": "paragraph_1653163343827_256562257",
       "dateCreated": "2022-05-21T20:02:23+0000",
-      "status": "FINISHED",
-      "focus": true,
-      "$$hashKey": "object:132136",
-      "text": "val pipelineFeatureCreate = new Pipeline()\r\n    .setStages(\r\n        Array(\r\n            pipelineFeatureTransform.fit(dfTrain),\r\n            vectorAssembler,\r\n            scaler\r\n        )\r\n    )",
-      "dateUpdated": "2022-05-21T20:04:58+0000",
-      "dateFinished": "2022-05-21T20:05:26+0000",
       "dateStarted": "2022-05-21T20:04:58+0000",
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "\u001b[1m\u001b[34mpipelineFeatureCreate\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.ml.Pipeline\u001b[0m = pipeline_9db1d8998752\n"
-          }
-        ]
-      }
+      "dateFinished": "2022-05-21T20:05:26+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:738"
     },
     {
+      "text": "val lr = new LogisticRegression()\r\n    .setMaxIter(25)\r\n    .setRegParam(0.05)\r\n    .setElasticNetParam(0.3)\r\n    .setFeaturesCol(\"scaledFeatures\")\r\n    .setLabelCol(label)",
       "user": "anonymous",
+      "dateUpdated": "2022-05-21T22:38:35+0000",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -2906,6 +2888,15 @@
       "settings": {
         "params": {},
         "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mlr\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.ml.classification.LogisticRegression\u001b[0m = logreg_7628e4a08696\n"
+          }
+        ]
       },
       "apps": [],
       "runtimeInfos": {},
@@ -2913,26 +2904,16 @@
       "jobName": "paragraph_1653163440443_557544960",
       "id": "paragraph_1653163440443_557544960",
       "dateCreated": "2022-05-21T20:04:00+0000",
+      "dateStarted": "2022-05-21T22:38:35+0000",
+      "dateFinished": "2022-05-21T22:38:35+0000",
       "status": "FINISHED",
-      "focus": true,
-      "$$hashKey": "object:132388",
-      "text": "val lr = new LogisticRegression()\r\n    .setMaxIter(10)\r\n    .setRegParam(0.09)\r\n    .setElasticNetParam(0.4)\r\n    .setFeaturesCol(\"scaledFeatures\")\r\n    .setLabelCol(label)",
-      "dateUpdated": "2022-05-21T20:05:50+0000",
-      "dateFinished": "2022-05-21T20:05:51+0000",
-      "dateStarted": "2022-05-21T20:05:50+0000",
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "\u001b[1m\u001b[34mlr\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.ml.classification.LogisticRegression\u001b[0m = logreg_1d2d5a584279\n"
-          }
-        ]
-      }
+      "$$hashKey": "object:739"
     },
     {
+      "text": "val pipeline = new Pipeline()\r\n    .setStages(\r\n        Array(\r\n            pipelineFeatureCreate.fit(dfTrain),\r\n            lr\r\n        )\r\n    )",
       "user": "anonymous",
-      "progress": 0,
+      "dateUpdated": "2022-05-21T22:38:39+0000",
+      "progress": 91,
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -2949,6 +2930,15 @@
       "settings": {
         "params": {},
         "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mpipeline\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.ml.Pipeline\u001b[0m = pipeline_148c7f1a8c7c\n"
+          }
+        ]
       },
       "apps": [],
       "runtimeInfos": {
@@ -2959,12 +2949,12 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=34",
-              "$$hashKey": "object:133268"
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=910",
+              "$$hashKey": "object:303786"
             },
             {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=35",
-              "$$hashKey": "object:133269"
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=911",
+              "$$hashKey": "object:303787"
             }
           ],
           "interpreterSettingId": "spark"
@@ -2974,22 +2964,10 @@
       "jobName": "paragraph_1653163441493_2096389619",
       "id": "paragraph_1653163441493_2096389619",
       "dateCreated": "2022-05-21T20:04:01+0000",
+      "dateStarted": "2022-05-21T22:38:39+0000",
+      "dateFinished": "2022-05-21T22:39:05+0000",
       "status": "FINISHED",
-      "focus": true,
-      "$$hashKey": "object:132457",
-      "text": "val pipeline = new Pipeline()\r\n    .setStages(\r\n        Array(\r\n            pipelineFeatureCreate.fit(dfTrain),\r\n            lr\r\n        )\r\n    )",
-      "dateUpdated": "2022-05-21T20:06:13+0000",
-      "dateFinished": "2022-05-21T20:06:45+0000",
-      "dateStarted": "2022-05-21T20:06:13+0000",
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "\u001b[1m\u001b[34mpipeline\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.ml.Pipeline\u001b[0m = pipeline_29dceb8bdfa4\n"
-          }
-        ]
-      }
+      "$$hashKey": "object:740"
     },
     {
       "user": "anonymous",
@@ -3020,82 +2998,234 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=36",
-              "$$hashKey": "object:133747"
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=912",
+              "$$hashKey": "object:310919"
             },
             {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=37",
-              "$$hashKey": "object:133748"
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=913",
+              "$$hashKey": "object:310920"
             },
             {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=38",
-              "$$hashKey": "object:133749"
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=914",
+              "$$hashKey": "object:310921"
             },
             {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=39",
-              "$$hashKey": "object:133750"
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=915",
+              "$$hashKey": "object:310922"
             },
             {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=40",
-              "$$hashKey": "object:133751"
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=916",
+              "$$hashKey": "object:310923"
             },
             {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=41",
-              "$$hashKey": "object:133752"
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=917",
+              "$$hashKey": "object:310924"
             },
             {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=42",
-              "$$hashKey": "object:133753"
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=918",
+              "$$hashKey": "object:310925"
             },
             {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=43",
-              "$$hashKey": "object:133754"
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=919",
+              "$$hashKey": "object:310926"
             },
             {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=44",
-              "$$hashKey": "object:133755"
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=920",
+              "$$hashKey": "object:310927"
             },
             {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=45",
-              "$$hashKey": "object:133756"
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=921",
+              "$$hashKey": "object:310928"
             },
             {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=46",
-              "$$hashKey": "object:133757"
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=922",
+              "$$hashKey": "object:310929"
             },
             {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=47",
-              "$$hashKey": "object:133758"
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=923",
+              "$$hashKey": "object:310930"
             },
             {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=48",
-              "$$hashKey": "object:133759"
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=924",
+              "$$hashKey": "object:310931"
             },
             {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=49",
-              "$$hashKey": "object:133760"
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=925",
+              "$$hashKey": "object:310932"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=926",
+              "$$hashKey": "object:310933"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=927",
+              "$$hashKey": "object:310934"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=928",
+              "$$hashKey": "object:310935"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=929",
+              "$$hashKey": "object:310936"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=930",
+              "$$hashKey": "object:310937"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=931",
+              "$$hashKey": "object:310938"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=932",
+              "$$hashKey": "object:310939"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=933",
+              "$$hashKey": "object:310940"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=934",
+              "$$hashKey": "object:310941"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=935",
+              "$$hashKey": "object:310942"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=936",
+              "$$hashKey": "object:310943"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=937",
+              "$$hashKey": "object:310944"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=938",
+              "$$hashKey": "object:310945"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=939",
+              "$$hashKey": "object:310946"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=940",
+              "$$hashKey": "object:310947"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=941",
+              "$$hashKey": "object:310948"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=942",
+              "$$hashKey": "object:310949"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=943",
+              "$$hashKey": "object:310950"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=944",
+              "$$hashKey": "object:310951"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=945",
+              "$$hashKey": "object:310952"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=946",
+              "$$hashKey": "object:310953"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=947",
+              "$$hashKey": "object:310954"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=948",
+              "$$hashKey": "object:310955"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=949",
+              "$$hashKey": "object:310956"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=950",
+              "$$hashKey": "object:310957"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=951",
+              "$$hashKey": "object:310958"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=952",
+              "$$hashKey": "object:310959"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=953",
+              "$$hashKey": "object:310960"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=954",
+              "$$hashKey": "object:310961"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=955",
+              "$$hashKey": "object:310962"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=956",
+              "$$hashKey": "object:310963"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=957",
+              "$$hashKey": "object:310964"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=958",
+              "$$hashKey": "object:310965"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=959",
+              "$$hashKey": "object:310966"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=960",
+              "$$hashKey": "object:310967"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=961",
+              "$$hashKey": "object:310968"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=962",
+              "$$hashKey": "object:310969"
+            },
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=963",
+              "$$hashKey": "object:310970"
             }
           ],
           "interpreterSettingId": "spark"
         }
       },
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1653163605739_929244810",
-      "id": "paragraph_1653163605739_929244810",
-      "dateCreated": "2022-05-21T20:06:45+0000",
+      "jobName": "paragraph_1653169364092_2015737142",
+      "id": "paragraph_1653169364092_2015737142",
+      "dateCreated": "2022-05-21T21:42:44+0000",
       "status": "FINISHED",
       "focus": true,
-      "$$hashKey": "object:133278",
+      "$$hashKey": "object:281087",
       "text": "val model = pipeline.fit(dfTrain)",
-      "dateUpdated": "2022-05-21T20:06:56+0000",
-      "dateFinished": "2022-05-21T20:08:23+0000",
-      "dateStarted": "2022-05-21T20:06:56+0000",
+      "dateUpdated": "2022-05-21T22:38:42+0000",
+      "dateFinished": "2022-05-21T22:41:09+0000",
+      "dateStarted": "2022-05-21T22:38:42+0000",
       "results": {
         "code": "SUCCESS",
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[1m\u001b[34mmodel\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.ml.PipelineModel\u001b[0m = pipeline_29dceb8bdfa4\n"
+            "data": "\u001b[1m\u001b[34mmodel\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.ml.PipelineModel\u001b[0m = pipeline_148c7f1a8c7c\n"
           }
         ]
       }
@@ -3129,133 +3259,24 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=50",
-              "$$hashKey": "object:134335"
-            },
-            {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=51",
-              "$$hashKey": "object:134336"
-            },
-            {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=52",
-              "$$hashKey": "object:134337"
-            },
-            {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=53",
-              "$$hashKey": "object:134338"
-            },
-            {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=54",
-              "$$hashKey": "object:134339"
-            },
-            {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=55",
-              "$$hashKey": "object:134340"
-            },
-            {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=56",
-              "$$hashKey": "object:134341"
-            },
-            {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=57",
-              "$$hashKey": "object:134342"
-            },
-            {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=58",
-              "$$hashKey": "object:134343"
-            },
-            {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=59",
-              "$$hashKey": "object:134344"
-            },
-            {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=60",
-              "$$hashKey": "object:134345"
-            },
-            {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=61",
-              "$$hashKey": "object:134346"
-            },
-            {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=62",
-              "$$hashKey": "object:134347"
-            },
-            {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=63",
-              "$$hashKey": "object:134348"
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=964",
+              "$$hashKey": "object:311208"
             }
           ],
           "interpreterSettingId": "spark"
         }
       },
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1653163442264_1680616088",
-      "id": "paragraph_1653163442264_1680616088",
-      "dateCreated": "2022-05-21T20:04:02+0000",
+      "jobName": "paragraph_1653169447180_901320832",
+      "id": "paragraph_1653169447180_901320832",
+      "dateCreated": "2022-05-21T21:44:07+0000",
       "status": "FINISHED",
       "focus": true,
-      "$$hashKey": "object:132526",
-      "text": "//save model\n\nval modelPath = dir+\"/spark-logistic-regression-model\"\nmodel.write.overwrite().save(modelPath)",
-      "dateUpdated": "2022-05-21T20:09:35+0000",
-      "dateFinished": "2022-05-21T20:09:52+0000",
-      "dateStarted": "2022-05-21T20:09:35+0000",
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "\u001b[1m\u001b[34mmodelPath\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m = ./notebook/otus/homework4/spark-logistic-regression-model\n"
-          }
-        ]
-      }
-    },
-    {
-      "user": "anonymous",
-      "progress": 0,
-      "config": {
-        "editorSetting": {
-          "language": "scala",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "colWidth": 12,
-        "editorMode": "ace/mode/scala",
-        "fontSize": 9,
-        "results": {},
-        "enabled": true
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "runtimeInfos": {
-        "jobUrl": {
-          "propertyName": "jobUrl",
-          "label": "SPARK JOB",
-          "tooltip": "View in Spark web UI",
-          "group": "spark",
-          "values": [
-            {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=64",
-              "$$hashKey": "object:134408"
-            }
-          ],
-          "interpreterSettingId": "spark"
-        }
-      },
-      "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1653163586803_1260880809",
-      "id": "paragraph_1653163586803_1260880809",
-      "dateCreated": "2022-05-21T20:06:26+0000",
-      "status": "FINISHED",
-      "focus": true,
-      "$$hashKey": "object:132974",
+      "$$hashKey": "object:281271",
       "text": "val predictions = model.transform(dfTrain)",
-      "dateUpdated": "2022-05-21T20:10:11+0000",
-      "dateFinished": "2022-05-21T20:10:13+0000",
-      "dateStarted": "2022-05-21T20:10:11+0000",
+      "dateUpdated": "2022-05-21T22:38:46+0000",
+      "dateFinished": "2022-05-21T22:41:10+0000",
+      "dateStarted": "2022-05-21T22:39:05+0000",
       "results": {
         "code": "SUCCESS",
         "msg": [
@@ -3287,6 +3308,60 @@
         "forms": {}
       },
       "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1653171749827_1253367831",
+      "id": "paragraph_1653171749827_1253367831",
+      "dateCreated": "2022-05-21T22:22:29+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:296434",
+      "text": "val evaluator = new MulticlassClassificationEvaluator()\r\n    .setLabelCol(label)\r\n    .setPredictionCol(\"prediction\")",
+      "dateUpdated": "2022-05-21T22:38:49+0000",
+      "dateFinished": "2022-05-21T22:41:10+0000",
+      "dateStarted": "2022-05-21T22:41:09+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mevaluator\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.ml.evaluation.MulticlassClassificationEvaluator\u001b[0m = MulticlassClassificationEvaluator: uid=mcEval_70215b08f475, metricName=f1, metricLabel=0.0, beta=1.0, eps=1.0E-15\n"
+          }
+        ]
+      }
+    },
+    {
+      "text": "println(\n    evaluator.evaluate(predictions)\n)",
+      "user": "anonymous",
+      "dateUpdated": "2022-05-21T22:38:51+0000",
+      "progress": 47,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "0.7056755748639272\n"
+          }
+        ]
+      },
+      "apps": [],
       "runtimeInfos": {
         "jobUrl": {
           "propertyName": "jobUrl",
@@ -3295,30 +3370,231 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=71",
-              "$$hashKey": "object:134945"
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=965",
+              "$$hashKey": "object:311270"
             }
           ],
           "interpreterSettingId": "spark"
         }
       },
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1653163912155_1847990681",
-      "id": "paragraph_1653163912155_1847990681",
-      "dateCreated": "2022-05-21T20:11:52+0000",
+      "jobName": "paragraph_1653163590403_629228331",
+      "id": "paragraph_1653163590403_629228331",
+      "dateCreated": "2022-05-21T20:06:30+0000",
+      "dateStarted": "2022-05-21T22:41:10+0000",
+      "dateFinished": "2022-05-21T22:41:39+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:746"
+    },
+    {
+      "user": "anonymous",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1653172036907_1164693643",
+      "id": "paragraph_1653172036907_1164693643",
+      "dateCreated": "2022-05-21T22:27:16+0000",
       "status": "FINISHED",
       "focus": true,
-      "$$hashKey": "object:134749",
-      "text": "predictions.select(label,\"prediction\").show",
-      "dateUpdated": "2022-05-21T20:12:52+0000",
-      "dateFinished": "2022-05-21T20:12:53+0000",
-      "dateStarted": "2022-05-21T20:12:52+0000",
+      "$$hashKey": "object:297532",
+      "text": "val lrevaluator = new RegressionEvaluator()\r\n    .setLabelCol(label)\r\n    .setPredictionCol(\"prediction\")\r\n    .setMetricName(\"mae\")",
+      "dateUpdated": "2022-05-21T22:45:01+0000",
+      "dateFinished": "2022-05-21T22:45:02+0000",
+      "dateStarted": "2022-05-21T22:45:01+0000",
       "results": {
         "code": "SUCCESS",
         "msg": [
           {
             "type": "TEXT",
-            "data": "+----------+----------+\n|churn_risk|prediction|\n+----------+----------+\n|         2|       2.0|\n|         1|       1.0|\n|         2|       2.0|\n|         2|       2.0|\n|         2|       2.0|\n|         5|       4.0|\n|         2|       2.0|\n|         3|       2.0|\n|         3|       2.0|\n|         3|       2.0|\n|         3|       2.0|\n|         2|       2.0|\n|         2|       2.0|\n|         1|       1.0|\n|         2|       2.0|\n|         1|       1.0|\n|         3|       2.0|\n|         1|       1.0|\n|         1|       1.0|\n|         4|       3.0|\n+----------+----------+\nonly showing top 20 rows\n\n"
+            "data": "\u001b[1m\u001b[34mlrevaluator\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.ml.evaluation.RegressionEvaluator\u001b[0m = RegressionEvaluator: uid=regEval_f92f9d40dd3d, metricName=mae, throughOrigin=false\n"
+          }
+        ]
+      }
+    },
+    {
+      "user": "anonymous",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=968",
+              "$$hashKey": "object:311663"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1653172085150_1446251391",
+      "id": "paragraph_1653172085150_1446251391",
+      "dateCreated": "2022-05-21T22:28:05+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:298298",
+      "text": "println(\r\n    lrevaluator.evaluate(predictions)\r\n)",
+      "dateUpdated": "2022-05-21T22:45:05+0000",
+      "dateFinished": "2022-05-21T22:45:34+0000",
+      "dateStarted": "2022-05-21T22:45:05+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "0.20896592364863045\n"
+          }
+        ]
+      }
+    },
+    {
+      "user": "anonymous",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "lineChart",
+              "height": 300,
+              "optionOpen": true,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "churn_risk": "string",
+                      "prediction": "string",
+                      "diff": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "churn_risk",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "diff",
+                  "index": 2,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=967",
+              "$$hashKey": "object:311689"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1653169846697_1503584117",
+      "id": "paragraph_1653169846697_1503584117",
+      "dateCreated": "2022-05-21T21:50:46+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:284398",
+      "text": "z.show(predictions.select(label, \"prediction\").withColumn(\"diff\", col(label)-col(\"prediction\")))",
+      "dateUpdated": "2022-05-21T22:45:50+0000",
+      "dateFinished": "2022-05-21T22:42:56+0000",
+      "dateStarted": "2022-05-21T22:42:55+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "churn_risk\tprediction\tdiff\n2\t2.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n5\t4.0\t1.0\n2\t2.0\t0.0\n3\t2.0\t1.0\n3\t2.0\t1.0\n3\t2.0\t1.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n5\t4.0\t1.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n5\t4.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n5\t4.0\t1.0\n3\t2.0\t1.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n5\t4.0\t1.0\n2\t2.0\t0.0\n5\t4.0\t1.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n5\t4.0\t1.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n5\t4.0\t1.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n3\t2.0\t1.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n5\t4.0\t1.0\n5\t4.0\t1.0\n3\t2.0\t1.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n5\t4.0\t1.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n5\t4.0\t1.0\n5\t4.0\t1.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n5\t4.0\t1.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n3\t2.0\t1.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n3\t2.0\t1.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n5\t4.0\t1.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n5\t4.0\t1.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n5\t4.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n3\t2.0\t1.0\n5\t4.0\t1.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n5\t4.0\t1.0\n5\t4.0\t1.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n4\t4.0\t0.0\n3\t2.0\t1.0\n4\t4.0\t0.0\n4\t4.0\t0.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n5\t4.0\t1.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n4\t4.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n5\t4.0\t1.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n3\t2.0\t1.0\n3\t2.0\t1.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n5\t4.0\t1.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n4\t4.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n5\t4.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n3\t2.0\t1.0\n4\t4.0\t0.0\n3\t2.0\t1.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n3\t2.0\t1.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n3\t2.0\t1.0\n3\t2.0\t1.0\n5\t4.0\t1.0\n5\t4.0\t1.0\n5\t4.0\t1.0\n2\t2.0\t0.0\n5\t4.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n5\t4.0\t1.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n4\t4.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n4\t4.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n5\t4.0\t1.0\n1\t1.0\t0.0\n5\t4.0\t1.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n5\t4.0\t1.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n5\t4.0\t1.0\n3\t2.0\t1.0\n3\t2.0\t1.0\n5\t4.0\t1.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n5\t4.0\t1.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n5\t4.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n5\t4.0\t1.0\n4\t4.0\t0.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n5\t4.0\t1.0\n3\t2.0\t1.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n5\t4.0\t1.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n5\t4.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n5\t4.0\t1.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n5\t4.0\t1.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n3\t2.0\t1.0\n3\t2.0\t1.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n3\t2.0\t1.0\n3\t2.0\t1.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n5\t4.0\t1.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n3\t2.0\t1.0\n5\t4.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n5\t4.0\t1.0\n3\t2.0\t1.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n3\t2.0\t1.0\n5\t4.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n5\t4.0\t1.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n4\t4.0\t0.0\n4\t4.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n3\t2.0\t1.0\n5\t4.0\t1.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n3\t2.0\t1.0\n5\t4.0\t1.0\n5\t4.0\t1.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n5\t4.0\t1.0\n2\t2.0\t0.0\n5\t4.0\t1.0\n2\t2.0\t0.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n5\t4.0\t1.0\n5\t4.0\t1.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n3\t2.0\t1.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n3\t2.0\t1.0\n5\t4.0\t1.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n5\t4.0\t1.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n5\t4.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n4\t4.0\t0.0\n5\t4.0\t1.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n5\t4.0\t1.0\n3\t2.0\t1.0\n4\t4.0\t0.0\n5\t4.0\t1.0\n5\t4.0\t1.0\n5\t4.0\t1.0\n3\t2.0\t1.0\n5\t4.0\t1.0\n5\t4.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n5\t4.0\t1.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n5\t4.0\t1.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n3\t2.0\t1.0\n5\t4.0\t1.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n5\t4.0\t1.0\n5\t4.0\t1.0\n4\t4.0\t0.0\n4\t4.0\t0.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n3\t2.0\t1.0\n4\t4.0\t0.0\n3\t2.0\t1.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n5\t4.0\t1.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n5\t4.0\t1.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n3\t2.0\t1.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n5\t4.0\t1.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n5\t4.0\t1.0\n1\t1.0\t0.0\n5\t4.0\t1.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n3\t2.0\t1.0\n3\t2.0\t1.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n5\t4.0\t1.0\n3\t2.0\t1.0\n5\t4.0\t1.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n3\t2.0\t1.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n5\t4.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n5\t4.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n5\t4.0\t1.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n1\t1.0\t0.0\n3\t2.0\t1.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n3\t2.0\t1.0\n4\t4.0\t0.0\n5\t4.0\t1.0\n4\t4.0\t0.0\n5\t4.0\t1.0\n2\t2.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n4\t4.0\t0.0\n5\t4.0\t1.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n2\t2.0\t0.0\n4\t4.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n4\t4.0\t0.0\n4\t4.0\t0.0\n1\t1.0\t0.0\n"
+          },
+          {
+            "type": "HTML",
+            "data": "<div class=\"result-alert alert-warning\" role=\"alert\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button><strong>Output is truncated</strong> to 1000 rows. Learn more about <strong>zeppelin.spark.maxResult</strong></div>\n"
           }
         ]
       }
@@ -3346,22 +3622,22 @@
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1653163588854_2117757164",
-      "id": "paragraph_1653163588854_2117757164",
-      "dateCreated": "2022-05-21T20:06:28+0000",
+      "jobName": "paragraph_1653169496642_415370943",
+      "id": "paragraph_1653169496642_415370943",
+      "dateCreated": "2022-05-21T21:44:56+0000",
       "status": "FINISHED",
       "focus": true,
-      "$$hashKey": "object:133043",
-      "text": "val evaluator = new MulticlassClassificationEvaluator()\r\n  .setLabelCol(label)\r\n  .setPredictionCol(\"prediction\")",
-      "dateUpdated": "2022-05-21T20:16:06+0000",
-      "dateFinished": "2022-05-21T20:16:06+0000",
-      "dateStarted": "2022-05-21T20:16:06+0000",
+      "$$hashKey": "object:283864",
+      "text": "val lrm = model.stages.collect{ case lrm: LogisticRegressionModel => lrm }.head",
+      "dateUpdated": "2022-05-21T22:43:05+0000",
+      "dateFinished": "2022-05-21T22:43:05+0000",
+      "dateStarted": "2022-05-21T22:43:05+0000",
       "results": {
         "code": "SUCCESS",
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[1m\u001b[34mevaluator\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.ml.evaluation.MulticlassClassificationEvaluator\u001b[0m = MulticlassClassificationEvaluator: uid=mcEval_f39baf9a6fdd, metricName=f1, metricLabel=0.0, beta=1.0, eps=1.0E-15\n"
+            "data": "\u001b[1m\u001b[34mlrm\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.ml.classification.LogisticRegressionModel\u001b[0m = LogisticRegressionModel: uid=logreg_7628e4a08696, numClasses=6, numFeatures=195\n"
           }
         ]
       }
@@ -3387,44 +3663,32 @@
         "forms": {}
       },
       "apps": [],
-      "runtimeInfos": {
-        "jobUrl": {
-          "propertyName": "jobUrl",
-          "label": "SPARK JOB",
-          "tooltip": "View in Spark web UI",
-          "group": "spark",
-          "values": [
-            {
-              "jobUrl": "http://37479a3770b2:4040/jobs/job?id=76",
-              "$$hashKey": "object:135179"
-            }
-          ],
-          "interpreterSettingId": "spark"
-        }
-      },
+      "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1653163590403_629228331",
-      "id": "paragraph_1653163590403_629228331",
-      "dateCreated": "2022-05-21T20:06:30+0000",
+      "jobName": "paragraph_1653168034323_1919031259",
+      "id": "paragraph_1653168034323_1919031259",
+      "dateCreated": "2022-05-21T21:20:34+0000",
       "status": "FINISHED",
       "focus": true,
-      "$$hashKey": "object:133112",
-      "text": "val accuracy = evaluator.evaluate(predictions)\r\nprintln(s\"Accuracy: ${accuracy}\")",
-      "dateUpdated": "2022-05-21T20:16:10+0000",
-      "dateFinished": "2022-05-21T20:16:39+0000",
-      "dateStarted": "2022-05-21T20:16:10+0000",
+      "$$hashKey": "object:71467",
+      "text": "println(s\"Coefficients: \\n${lrm.coefficientMatrix}\")\r\nprintln(s\"Intercepts: \\n${lrm.interceptVector}\")",
+      "dateUpdated": "2022-05-21T22:43:38+0000",
+      "dateFinished": "2022-05-21T22:43:38+0000",
+      "dateStarted": "2022-05-21T22:43:38+0000",
       "results": {
         "code": "SUCCESS",
         "msg": [
           {
             "type": "TEXT",
-            "data": "Accuracy: 0.5996594527636148\n\u001b[1m\u001b[34maccuracy\u001b[0m: \u001b[1m\u001b[32mDouble\u001b[0m = 0.5996594527636148\n"
+            "data": "Coefficients: \n6 x 195 CSCMatrix\n(1,0) 1.3687002490306213E-7\n(1,1) 6.44991264804577E-8\n(2,1) 0.0010745881152121387\n(4,1) -1.3477440064767637E-7\n(1,2) 4.364082391979818E-7\n(2,2) -6.024111029780484E-7\n(3,2) -1.0941258572131729E-7\n(4,2) -6.701476799385885E-8\n(1,4) 1.2904964843433653E-7\n(1,5) 0.07615248149413746\n(2,5) -0.029976087384353808\n(1,68) -0.002051401012189401\n(2,68) 0.013430442952470386\n(3,68) -2.6102745180327747E-7\n(4,68) -9.73771282235486E-7\n(1,69) 1.3582174731680002E-6\n(2,69) -3.868052466196706E-7\n(3,69) -3.311957051361897E-7\n(4,69) -1.1072725692321536E-6\n(1,70) 6.76572681409458E-8\n(1,71) 0.0033878948966510197\n(2,71) 0.0017499628676383246\n(3,71) 7.712539380787786E-4\n(4,71) -9.55280861035004E-5\n(5,71) 8.179896766874908E-4\n(2,72) 1.456973838375907E-4\n(1,73) 6.183465287091812E-6\n(2,73) -2.1501919385353133E-6\n(4,73) -3.095741804929288E-6\n(5,73) 6.02803621243571E-7\n(1,74) 9.771500018319851E-7\n(2,74) -2.867115481867635E-7\n(3,74) -1.8730235082096073E-7\n(4,74) -5.801548140708759E-7\n(1,75) 2.1913238474955226E-4\n(2,75) -2.3532164862167108E-4\n(3,75) 4.896915304958612E-5\n(4,75) -5.808861832086764E-6\n(5,75) 4.928328399757238E-5\n(1,76) 2.277153190414784E-6\n(2,76) -7.510405793059135E-7\n(3,76) -3.9700691768552035E-7\n(4,76) -1.240253784301944E-6\n(5,76) 8.307173348835167E-8\n(1,79) 9.767727802068457E-8\n(1,80) 1.3717703909557845E-7\n(2,85) 5.71270197143801E-4\n(2,108) 0.002901150099229573\n(1,112) -0.0016665690696953221\n(2,112) 0.005984534739075756\n(3,112) 1.4729253975051147E-5\n(4,112) -3.269071077924559E-6\n(5,112) 1.168053420866256E-5\n(1,113) -0.0017231069039184638\n(2,113) 0.0060287895871119395\n(3,113) 1.4708207414915015E-5\n(4,113) -3.2646823293040827E-6\n(5,113) 1.1663788904919754E-5\n(1,114) 7.911100512395659E-4\n(2,114) -8.485709720252273E-4\n(3,114) 1.7946740971522198E-4\n(4,114) -2.2054432628780083E-5\n(5,114) 1.8803347764625642E-4\n(1,115) -0.002112762724666836\n(2,115) 0.009685555307094097\n(3,115) 5.112597152864092E-6\n(4,115) -1.792342249645832E-6\n(5,115) 3.049281934599619E-6\n(1,116) 0.017192157687624828\n(1,117) 4.482909163720351E-6\n(2,117) -6.324117130695075E-6\n(4,117) -2.359422985249424E-6\n(5,117) 4.7063681132271903E-7\n(1,118) 1.6449193585685088E-5\n(2,118) -1.78170567300676E-5\n(3,118) 2.0020795217503592E-7\nIntercepts: \n[-10.886991375688293,2.8923402262559006,3.1631754156609535,2.433783492048528,1.9806491773998516,0.41704306432306004]\n"
           }
         ]
       }
     },
     {
+      "text": "%md\nДля линейной регрессии, даже без данных о дате событий, мы получили качество __Accuracy__ ~ 70%.\nНо так же мы видиим, что отличие предсказания обычно всего на 1 в классе, то есть в реальности качество предсказания об оттоке буде еще выше",
       "user": "anonymous",
+      "dateUpdated": "2022-05-21T22:43:46+0000",
       "progress": 0,
       "config": {
         "tableHide": false,
@@ -3445,44 +3709,41 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p>Для линейной регрессии, даже без данных о дате событий, мы получили качество <strong>Accuracy</strong> ~ 70%.<br />\nНо так же мы видиим, что отличие предсказания обычно всего на 1 в классе, то есть в реальности качество предсказания об оттоке буде еще выше</p>\n\n</div>"
+          }
+        ]
+      },
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
       "jobName": "paragraph_1653163826947_334813074",
       "id": "paragraph_1653163826947_334813074",
       "dateCreated": "2022-05-21T20:10:26+0000",
+      "dateStarted": "2022-05-21T22:43:46+0000",
+      "dateFinished": "2022-05-21T22:43:46+0000",
       "status": "FINISHED",
-      "focus": true,
-      "$$hashKey": "object:134413",
-      "text": "%md\nДля линейной регрессии, даже без данных о дате событий, мы получили качество __Accuracy__ близкое к 60%.\nНо так же мы видиим, что отличие предсказания обычно всего на 1 в классе, то есть в реальности качество предсказания об оттоке буде еще выше",
-      "dateUpdated": "2022-05-21T20:33:15+0000",
-      "dateFinished": "2022-05-21T20:33:15+0000",
-      "dateStarted": "2022-05-21T20:33:15+0000",
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<p>Для линейной регрессии, даже без данных о дате событий, мы получили качество <strong>Accuracy</strong> близкое к 60%.<br />\nНо так же мы видиим, что отличие предсказания обычно всего на 1 в классе, то есть в реальности качество предсказания об оттоке буде еще выше</p>\n\n</div>"
-          }
-        ]
-      }
+      "$$hashKey": "object:747"
     },
     {
       "user": "anonymous",
       "progress": 0,
       "config": {
-        "colWidth": 12,
-        "fontSize": 9,
-        "enabled": true,
-        "results": {},
         "editorSetting": {
           "language": "scala",
           "editOnDblClick": false,
           "completionKey": "TAB",
           "completionSupport": true
         },
-        "editorMode": "ace/mode/scala"
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
       },
       "settings": {
         "params": {},
@@ -3495,8 +3756,9 @@
       "id": "paragraph_1653163827684_2034233909",
       "dateCreated": "2022-05-21T20:10:27+0000",
       "status": "READY",
-      "focus": true,
-      "$$hashKey": "object:134482"
+      "$$hashKey": "object:748",
+      "text": "",
+      "dateUpdated": "2022-05-21T21:45:20+0000"
     },
     {
       "user": "anonymous",
@@ -3525,8 +3787,7 @@
       "id": "paragraph_1653163828362_1327153816",
       "dateCreated": "2022-05-21T20:10:28+0000",
       "status": "READY",
-      "focus": true,
-      "$$hashKey": "object:134551"
+      "$$hashKey": "object:749"
     },
     {
       "user": "anonymous",
@@ -3555,8 +3816,7 @@
       "id": "paragraph_1653164706303_1667529048",
       "dateCreated": "2022-05-21T20:25:06+0000",
       "status": "READY",
-      "focus": true,
-      "$$hashKey": "object:135228"
+      "$$hashKey": "object:750"
     },
     {
       "user": "anonymous",
@@ -3585,8 +3845,7 @@
       "id": "paragraph_1653164707229_168269415",
       "dateCreated": "2022-05-21T20:25:07+0000",
       "status": "READY",
-      "focus": true,
-      "$$hashKey": "object:135297"
+      "$$hashKey": "object:751"
     },
     {
       "user": "anonymous",
@@ -3615,8 +3874,7 @@
       "id": "paragraph_1653164707907_1472988214",
       "dateCreated": "2022-05-21T20:25:07+0000",
       "status": "READY",
-      "focus": true,
-      "$$hashKey": "object:135366"
+      "$$hashKey": "object:752"
     },
     {
       "user": "anonymous",
@@ -3645,8 +3903,7 @@
       "id": "paragraph_1653164708640_834321877",
       "dateCreated": "2022-05-21T20:25:08+0000",
       "status": "READY",
-      "focus": true,
-      "$$hashKey": "object:135435"
+      "$$hashKey": "object:753"
     }
   ],
   "name": "HomeWork5-AB",
