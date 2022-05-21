@@ -1,4 +1,4 @@
-﻿{
+{
   "paragraphs": [
     {
       "text": "sc.version",
@@ -3427,17 +3427,19 @@
       "user": "anonymous",
       "progress": 0,
       "config": {
-        "colWidth": 12,
-        "fontSize": 9,
-        "enabled": true,
-        "results": {},
+        "tableHide": false,
         "editorSetting": {
-          "language": "scala",
-          "editOnDblClick": false,
+          "language": "markdown",
+          "editOnDblClick": true,
           "completionKey": "TAB",
-          "completionSupport": true
+          "completionSupport": false
         },
-        "editorMode": "ace/mode/scala"
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
       },
       "settings": {
         "params": {},
@@ -3449,9 +3451,22 @@
       "jobName": "paragraph_1653163826947_334813074",
       "id": "paragraph_1653163826947_334813074",
       "dateCreated": "2022-05-21T20:10:26+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "focus": true,
-      "$$hashKey": "object:134413"
+      "$$hashKey": "object:134413",
+      "text": "%md\nДля линейной регрессии, даже без данных о дате событий, мы получили качество __Accuracy__ близкое к 60%.\nНо так же мы видиим, что отличие предсказания обычно всего на 1 в классе, то есть в реальности качество предсказания об оттоке буде еще выше",
+      "dateUpdated": "2022-05-21T20:33:15+0000",
+      "dateFinished": "2022-05-21T20:33:15+0000",
+      "dateStarted": "2022-05-21T20:33:15+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p>Для линейной регрессии, даже без данных о дате событий, мы получили качество <strong>Accuracy</strong> близкое к 60%.<br />\nНо так же мы видиим, что отличие предсказания обычно всего на 1 в классе, то есть в реальности качество предсказания об оттоке буде еще выше</p>\n\n</div>"
+          }
+        ]
+      }
     },
     {
       "user": "anonymous",
